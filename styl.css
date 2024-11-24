@@ -1,0 +1,84 @@
+
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+    color: #333;
+  }
+  
+  /* Header Styles */
+  header {
+    text-align: center;
+    padding: 2rem;
+    background: #007BFF;
+    color: #fff;
+  }
+  
+  /* Input Section */
+  .input-section {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  input, button {
+    padding: 10px;
+    margin: 10px 5px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  input {
+    width: 60%;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #0056b3;
+  }
+  
+  /* Instruction Section */
+  .instruction-section {
+    text-align: center;
+    margin: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .instructions {
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  /* Thumbnail Section */
+  .thumbnail-section {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .thumbnail-section img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .adsense {
+    text-align: center;
+    margin: 20px auto;
+    padding: 10px 0;
+  }
+  
