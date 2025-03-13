@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descargar miniaturas de YouTube</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/dist/umd/i18next.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LfavPIqAAAAAJsc_-_wAGXqmSVLNEK2tuZztTjX"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+        .content-container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .thumbnail-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .description, .faq-section {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .faq-section h2, .description h2 {
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .faq-item {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: white;
+            border-radius: 5px;
+        }
+        .faq-item h3 {
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+        }
+        .faq-item p {
+            font-size: 20px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS40NPSNGJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZS40NPSNGJ');
+</script>
+</head>
+<body>
+    <!-- Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Descargador de Miniaturas de YouTube</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="privacy-policy.html">Política de Privacidad</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about-us.html">Sobre Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contáctanos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido de la Página -->
+    <div class="container content-container">
+        <h1 id="title">Descargador de Miniaturas de YouTube</h1>
+        <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Introduce la URL de YouTube">
+        <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">Generar Miniaturas</button>
+        <div id="thumbnails" class="row mt-4"></div>
+
+        <!-- Descripción optimizada para SEO -->
+        <section class="description">
+            <h2>Guardar miniaturas de videos de YouTube</h2>
+            <h2>Descarga Miniaturas de YouTube en Alta Calidad</h2>
+            <p>
+                Descarga gratuitamente miniaturas de YouTube en alta calidad! Obtén la imagen en miniatura de cualquier video de YouTube en unos pocos clics.
+                Con nuestra herramienta de guardado de miniaturas de YouTube, recupera la mejor miniatura para YouTube en los tamaños óptimos (HQ, HD, SD).
+                Ideal para creadores y marketers, nuestro generador de miniaturas de YouTube te permite acceder rápidamente a la imagen perfecta para tus videos.
+                Prueba nuestro Descargador de Miniaturas de YouTube ahora!
+            </p>
+        </section>
+
+        <!-- Sección de Preguntas Frecuentes -->
+        <section id="faq" class="faq-section">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h3>Cómo descargar una miniatura de YouTube?</h3>
+                <p>Copia la URL del video de YouTube, pégala en el campo de entrada y haz clic en "Generar Miniaturas". Selecciona el tamaño y haz clic en "Descargar".</p>
+            </div>
+            <div class="faq-item">
+                <h3>Qué tamaños de imágenes están disponibles?</h3>
+                <p>Ofrecemos varios tamaños: HD (1920x1080), HQ (480x360), SD (640x480), MQ (320x180) e Imagen Normal (120x90).</p>
+            </div>
+            <div class="faq-item">
+                <h3>Por qué no se muestra la miniatura de YouTube en HD?</h3>
+                <p>Si la miniatura de YouTube en HD (1920x1080) no se muestra, puede deberse a las siguientes razones: <br>
+
+                    •	El video es privado o ha sido eliminado: solo los videos públicos permiten la visualización de miniaturas. <br>
+                    •	El video es reciente: a veces, YouTube tarda un tiempo en generar todas las resoluciones de las miniaturas. <br>
+                    •	El video no tiene una miniatura en HD: algunos videos, especialmente los más antiguos, pueden no tener una imagen en 1920x1080.<br>
+                    •	Error en el enlace de YouTube: asegúrate de que el enlace sea correcto y siga este formato: https://www.youtube.com/watch?v=ID_VIDEO.<br>
+                    •	Bloqueo por YouTube: en algunos casos, YouTube puede restringir el acceso a ciertas miniaturas debido a derechos de autor.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Es legal descargar una miniatura de YouTube?</h3>
+                <p>Las miniaturas de YouTube están protegidas por derechos de autor. Su reutilización sin autorización puede causar problemas legales.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Este servicio funciona en móviles?</h3>
+                <p>Sí, nuestra herramienta de descarga de miniaturas de YouTube es compatible con móviles, optimizada para iPhone, Android, tablets y PC.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Por qué no se muestran algunas miniaturas de YouTube?</h3>
+                <p>Si la imagen no se carga:
+
+                    Verifica que el video de YouTube sea público y no privado o eliminado.
+                    Asegúrate de haber pegado un enlace válido con el formato: https://www.youtube.com/watch?v=ID_VIDEO.</p>
+            </div>
+            <div class="faq-item">
+                <h3>El sitio está disponible en varios idiomas?</h3>
+                <p>Sí, nuestra plataforma es multilingüe y se adapta al idioma de tu navegador. Idiomas disponibles: Español, Inglés, Francés, Chino, Japonés, Hindi y Ruso.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 Descargas de Miniaturas de YouTube. Todos los derechos reservados.</p>
+            <div>
+                <a class="fb" href="https://web.facebook.com/profile.php?id=61573719356847" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a class="twtr" href="https://x.com/ThumbnailD17459" target="_blank" class="social-icon">
+                    <img src="icons8-twitter 3.svg" alt="Logo de X" style="width: 35px; height: 35px;">
+                </a>
+                <a class="insta" href="https://www.instagram.com/mryass6095/#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+
+        <!-- Iconos de FontAwesome -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+        <style>
+            .footer {
+                text-align: center;
+                margin-top: 30px;
+                padding: 20px;
+                background: #333;
+                color: white;
+            }
+            .fb, .twtr, .ytb, .linkdn, .insta {
+                margin-top: 10px;
+            }
+            .fb, .twtr, .ytb, .linkdn, .insta {
+                display: inline-block;
+                margin: 0 10px;
+                color: white;
+                font-size: 24px;
+                transition: color 0.3s;
+            }
+            .fb { color: #007bff; }
+            .twtr { color: #007bff; }
+            .insta { color: #E4405F; }
+        </style>
+    </div>
+
+    <script>
+        function getYouTubeID(url) {
+            let match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.*|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
+            return match ? match[1] : null;
+        }
+
+        function generateThumbnails() {
+            let url = document.getElementById("videoUrl").value;
+            let videoId = getYouTubeID(url);
+            if (!videoId) {
+                alert("URL de YouTube no válida");
+                return;
+            }
+
+            let sizes = [
+                { label: "HQ (480x360)", size: "hqdefault.jpg" },
+                { label: "HD (1920x1080)", size: "maxresdefault.jpg" },
+                { label: "HD (1280x720)", size: "sddefault.jpg" },
+                { label: "SD (640x480)", size: "mqdefault.jpg" },
+                { label: "MQ (320x180)", size: "hqdefault.jpg" },
+                { label: "Imagen Normal (120x90)", size: "default.jpg" }
+            ];
+
+            let container = document.getElementById("thumbnails");
+            container.innerHTML = "";
+
+            sizes.forEach(size => {
+                let imgUrl = `https://img.youtube.com/vi/${videoId}/${size.size}`;
+                let col = document.createElement("div");
+                col.className = "col-md-4 text-center mt-3 thumbnail-container";
+                col.innerHTML = `
+                    <p>${size.label}</p>
+                    <img src="${imgUrl}" alt="Miniatura" class="img-fluid">
+                    <a href="${imgUrl}" download class="btn btn-success mt-2">Descargar</a>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function setLanguage() {
+            const languages = {
+               /* "en": { title: "YouTube Thumbnail Downloader", generateBtn: "Generate Thumbnails" },
+                "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures" },
+                "zh": { title: "YouTube缩略图下载器", generateBtn: "生成缩略图" },
+                "ja": { title: "YouTubeサムネイルダウンローダー", generateBtn: "サムネイルを生成" },*/
+                "es": { title: "Descargador de miniaturas de YouTube", generateBtn: "Generar miniaturas" },
+                /*"hi": { title: "यूट्यूब थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें" },
+                "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры" }*/
+            };
+            let userLang = navigator.language.substring(0, 2);
+            let lang = languages[userLang] || languages["en"];
+            document.getElementById("title").textContent = lang.title;
+            document.getElementById("generateBtn").textContent = lang.generateBtn;
+        }
+
+        setLanguage();
+    </script>
+</body>
+</html>

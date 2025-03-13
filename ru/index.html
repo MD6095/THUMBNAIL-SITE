@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузчик миниатюр YouTube</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/dist/umd/i18next.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LfavPIqAAAAAJsc_-_wAGXqmSVLNEK2tuZztTjX"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+        .content-container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .thumbnail-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .description, .faq-section {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .faq-section h2, .description h2 {
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .faq-item {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: white;
+            border-radius: 5px;
+        }
+        .faq-item h3 {
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+        }
+        .faq-item p {
+            font-size: 20px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS40NPSNGJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZS40NPSNGJ');
+</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Загрузчик миниатюр YouTube</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="privacy-policy.html">Политика конфиденциальности</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about-us.html">О нас</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Связаться с нами</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container content-container">
+        <h1 id="title">Загрузчик миниатюр YouTube</h1>
+        <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Введите URL YouTube">
+        <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">Сгенерировать миниатюры</button>
+        <div id="thumbnails" class="row mt-4"></div>
+
+        <!-- Description optimisée SEO -->
+        <section class="description">
+            <h2>Сохранить миниатюры видео YouTube</h2>
+            <h2>Скачать миниатюры YouTube в высоком качестве</h2>
+            <p>
+                Скачивайте миниатюры YouTube в высоком качестве бесплатно! Получите миниатюру любого видео YouTube всего за несколько кликов.
+                С нашим инструментом для сохранения миниатюр YouTube вы можете получить лучшие миниатюры для YouTube в оптимальных размерах (HQ, HD, SD).
+                Идеально подходит для создателей и маркетологов, наш генератор миниатюр YouTube позволяет быстро получить идеальное изображение для ваших видео.
+                Попробуйте наш YouTube Thumbnail Saver прямо сейчас!
+            </p>
+        </section>
+
+        <!-- Section FAQ -->
+        <section id="faq" class="faq-section">
+            <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-item">
+                <h3>Как скачать миниатюру YouTube?</h3>
+                <p>Скопируйте URL видео YouTube, вставьте его в поле ввода и нажмите "Сгенерировать миниатюры". Выберите размер и нажмите "Скачать".</p>
+            </div>
+            <div class="faq-item">
+                <h3>Какие размеры изображений доступны?</h3>
+                <p>Мы предлагаем несколько размеров: HD (1920x1080), HQ (480x360), SD (640x480), MQ (320x180) и обычное изображение (120x90).</p>
+            </div>
+            <div class="faq-item">
+                <h3>Почему миниатюра YouTube HD не отображается?</h3>
+                <p>Если миниатюра YouTube HD (1920x1080) не отображается, это может быть связано с одной из следующих причин:<br>
+                    • Видео является приватным или удалено: миниатюры отображаются только для публичных видео.<br>
+                    • Видео недавно загружено: иногда YouTube требуется время для генерации всех разрешений миниатюр.<br>
+                    • Видео не имеет миниатюры HD: некоторые старые видео могут не иметь изображения в разрешении 1920x1080.<br>
+                    • Ошибка в ссылке YouTube: убедитесь, что ссылка правильная и имеет формат: https://www.youtube.com/watch?v=ID_ВИДЕО.<br>
+                    • Блокировка YouTube: в некоторых случаях YouTube может ограничить доступ к некоторым миниатюрам из-за авторских прав.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Законно ли скачивать миниатюру YouTube?</h3>
+                <p>Миниатюры YouTube защищены авторским правом. Их повторное использование без разрешения может привести к юридическим проблемам.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Работает ли этот сервис на мобильных устройствах?</h3>
+                <p>Да, наш инструмент для скачивания миниатюр YouTube совместим с мобильными устройствами, включая iPhone, Android, планшеты и ПК.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Почему некоторые миниатюры YouTube не отображаются?</h3>
+                <p>Если изображение не загружается:<br>
+                    Убедитесь, что видео YouTube является публичным, а не приватным или удаленным.<br>
+                    Убедитесь, что вы вставили правильную ссылку в формате: https://www.youtube.com/watch?v=ID_ВИДЕО.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Доступен ли сайт на нескольких языках?</h3>
+                <p>Да, наша платформа поддерживает несколько языков и автоматически адаптируется к языку вашего браузера. Доступные языки: русский, английский, испанский, китайский, японский и хинди.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 YouTube Thumbnail Downloads. Все права защищены.</p>
+            <div>
+                <a class="fb" href="https://web.facebook.com/profile.php?id=61573719356847" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a class="twtr" href="https://x.com/ThumbnailD17459" target="_blank" class="social-icon">
+                    <img src="icons8-twitter 3.svg" alt="X Logo" style="width: 35px; height: 35px;">
+                </a>
+                <a class="insta" href="https://www.instagram.com/mryass6095/#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+    <style>
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .fb, .twtr, .ytb, .linkdn, .insta {
+            margin-top: 10px;
+        }
+        .fb, .twtr, .ytb, .linkdn, .insta {
+            display: inline-block;
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .fb { color: #007bff; }
+        .twtr { color: #007bff; }
+        .insta { color: #E4405F; }
+    </style>
+
+    <script>
+        function getYouTubeID(url) {
+            let match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.*|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
+            return match ? match[1] : null;
+        }
+
+        function generateThumbnails() {
+            let url = document.getElementById("videoUrl").value;
+            let videoId = getYouTubeID(url);
+            if (!videoId) {
+                alert("Неверный URL YouTube");
+                return;
+            }
+
+            let sizes = [
+                { label: "HQ (480x360)", size: "hqdefault.jpg" },
+                { label: "HD (1920x1080)", size: "maxresdefault.jpg" },
+                { label: "HD (1280x720)", size: "sddefault.jpg" },
+                { label: "SD (640x480)", size: "mqdefault.jpg" },
+                { label: "MQ (320x180)", size: "hqdefault.jpg" },
+                { label: "Обычное изображение (120x90)", size: "default.jpg" }
+            ];
+
+            let container = document.getElementById("thumbnails");
+            container.innerHTML = "";
+
+            sizes.forEach(size => {
+                let imgUrl = `https://img.youtube.com/vi/${videoId}/${size.size}`;
+                let col = document.createElement("div");
+                col.className = "col-md-4 text-center mt-3 thumbnail-container";
+                col.innerHTML = `
+                    <p>${size.label}</p>
+                    <img src="${imgUrl}" alt="Thumbnail" class="img-fluid">
+                    <a href="${imgUrl}" download class="btn btn-success mt-2">Скачать</a>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function setLanguage() {
+            const languages = {
+               /* "en": { title: "YouTube Thumbnail Downloader", generateBtn: "Generate Thumbnails" },
+                "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures" },
+                "zh": { title: "YouTube缩略图下载器", generateBtn: "生成缩略图" },
+                "ja": { title: "YouTubeサムネイルダウンローダー", generateBtn: "サムネイルを生成" },
+                "es": { title: "Descargador de miniaturas de YouTube", generateBtn: "Generar miniaturas" },
+                "hi": { title: "यूट्यूब थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें" },*/
+                "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры" }
+            };
+            let userLang = navigator.language.substring(0, 2);
+            let lang = languages[userLang] || languages["en"];
+            document.getElementById("title").textContent = lang.title;
+            document.getElementById("generateBtn").textContent = lang.generateBtn;
+        }
+
+        setLanguage();
+    </script>
+</body>
+</html>

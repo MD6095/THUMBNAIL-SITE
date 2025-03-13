@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Détecter la langue du navigateur
+        const userLang = navigator.language || navigator.userLanguage;
+        
+        // Définir les langues prises en charge et leurs dossiers correspondants
+        const supportedLangs = {
+            "fr": "fr",
+            "en": "en",
+            "es": "es",
+            "zh": "zh",
+            "ja": "ja",
+            "hi": "hi",
+            "ru": "ru",
+            "it": "it"
+        };
+
+        // Extraire le code de langue principale (ex: "fr" de "fr-FR")
+        const langCode = userLang.split('-')[0];
+
+        // Vérifier si la langue est supportée, sinon utiliser l'anglais par défaut
+        const redirectLang = supportedLangs[langCode] || "en";
+
+        // Rediriger vers le bon sous-dossier
+        window.location.href = `/${redirectLang}/`;
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>

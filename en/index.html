@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail Downloader</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/dist/umd/i18next.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LfavPIqAAAAAJsc_-_wAGXqmSVLNEK2tuZztTjX"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+        .content-container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .thumbnail-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .description, .faq-section {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .faq-section h2, .description h2 {
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .faq-item {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: white;
+            border-radius: 5px;
+        }
+        .faq-item h3 {
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+        }
+        .faq-item p {
+            font-size: 20px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS40NPSNGJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZS40NPSNGJ');
+</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">YouTube Thumbnail Downloader</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about-us.html"> About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container content-container">
+        <h1 id="title">YouTube Thumbnail Downloader</h1>
+        <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Enter the YouTube URL">
+        <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">Generate Thumbnails</button>
+        <div id="thumbnails" class="row mt-4"></div>
+
+        <!-- Description optimisée SEO -->
+        <section class="description">
+            <h2> Save YT Video Thumbnails </h2>
+            <h2> Download YouTube Thumbnails in High Quality</h2>
+            <p>
+                Download YouTube thumbnails in high quality for free! Get the thumbnail image of any YouTube video in just a few clicks.
+With our YouTube thumbnail saver, retrieve the best YouTube thumbnail at optimal sizes (HQ, HD, SD).
+Perfect for creators and marketers, our YouTube thumbnail generator allows you to quickly access the ideal image for your videos.
+Try our YouTube Thumbnail Saver now!
+            </p>
+        </section>
+
+        <!-- Section FAQ -->
+        <section id="faq" class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How to download a YouTube thumbnail?</h3>
+                <p>Copy the YouTube video URL, paste it into the input box, then click "Generate Thumbnails". Select the size and click "Download".</p>
+            </div>
+            <div class="faq-item">
+                <h3>What image sizes are available?</h3>
+                <p>We offer multiple sizes: HD (1920x1080), HQ (480x360), SD (640x480), MQ (320x180), and Normal Image (120x90).</p>
+            </div>
+            <div class="faq-item">
+                <h3> Why is the YouTube HD thumbnail not showing?</h3>
+                <p>If the YouTube HD thumbnail (1920x1080) is not displaying, it may be due to the following reasons:
+
+                    The video is private or deleted: Only public videos allow thumbnails to be displayed.
+                    The video is new: Sometimes, YouTube takes time to generate all thumbnail resolutions.
+                    The video does not have an HD thumbnail: Some videos, especially older ones, may not have a 1920x1080 image.
+                    YouTube link error: Ensure the link is correct and follows this format: https://www.youtube.com/watch?v=VIDEO_ID.
+                    Restricted by YouTube: In some cases, YouTube may limit access to certain thumbnails due to copyright restrictions.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is it legal to download a YouTube thumbnail?</h3>
+                <p>YouTube thumbnails are protected by copyright. Reusing them without permission may cause legal issues.</p>
+            </div>
+            <div class="faq-item">
+                <h3> Does this service work on mobile?</h3>
+                <p>Yes, our YouTube thumbnail downloader tool is mobile-friendly, optimized for iPhone, Android, tablets, and PCs.</p>
+            </div>
+            <div class="faq-item">
+                <h3> Why are some YouTube thumbnails not showing?</h3>
+                <p>If the image doesn’t load:
+
+                    Make sure the YouTube video is public, not private or deleted.
+                    Ensure you’ve pasted a valid link in this format: https://www.youtube.com/watch?v=VIDEO_ID.</p>
+            </div>
+            <div class="faq-item">
+            <h3> Is the website available in multiple languages?</h3>
+                <p>Yes, our platform is multilingual and adapts to your browser’s language. Available languages: French, English, Spanish, Chinese, Japanese, Hindi, and Russian.</p>
+            </div>
+        </section>
+
+        
+<footer class="footer">
+    <p>&copy; 2024 YouTube Thumbnail Downloads. Tous droits réservés.</p>
+    <div >
+        <a class="fb" href="https://web.facebook.com/profile.php?id=61573719356847" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a class="twtr" href="https://x.com/ThumbnailD17459" target="_blank" class="social-icon">
+            <img src="icons8-twitter 3.svg" alt="X Logo" style="width: 35px; height: 35px;">
+        </a>
+        <a class="insta" href="https://www.instagram.com/mryass6095/#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+       
+       
+    </div>
+</footer>
+
+<!-- FontAwesome Icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+<style>
+    .footer {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        background: #333;
+        color: white;
+    }
+    .fb, .twtr, .ytb, .linkdn, .insta{
+        margin-top: 10px;
+    }
+    .fb, .twtr, .ytb, .linkdn, .insta{
+        display: inline-block;
+        margin: 0 10px;
+        color: white;
+        font-size: 24px;
+        transition: color 0.3s;
+    }
+    /*.social-icon:hover {
+        color: #007bff;
+        color: #007bff;
+        color: #E4405F;
+
+        color: #FF0000;
+    }*/
+    
+    .fb{color: #007bff;}
+    .twtr{color: #007bff;}
+    .insta{color: #E4405F;}
+    /*.ytb{color: #FF0000;}*/
+   /* .linkdn{color: #007bff}*/
+
+</style>
+
+        </footer>
+    </div>
+
+    <script>
+        function getYouTubeID(url) {
+            let match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.*|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
+            return match ? match[1] : null;
+        }
+
+        function generateThumbnails() {
+            let url = document.getElementById("videoUrl").value;
+            let videoId = getYouTubeID(url);
+            if (!videoId) {
+                alert("Invalid YouTube URL");
+                return;
+            }
+
+            let sizes = [
+                { label: "HQ (480x360)", size: "hqdefault.jpg" },
+                { label: "HD (1920x1080)", size: "maxresdefault.jpg" },
+                { label: "HD (1280x720)", size: "sddefault.jpg" },
+                { label: "SD (640x480)", size: "mqdefault.jpg" },
+                { label: "MQ (320x180)", size: "hqdefault.jpg" },
+                { label: "Normal Image (120x90)", size: "default.jpg" }
+            ];
+
+            let container = document.getElementById("thumbnails");
+            container.innerHTML = "";
+
+            sizes.forEach(size => {
+                let imgUrl = `https://img.youtube.com/vi/${videoId}/${size.size}`;
+                let col = document.createElement("div");
+                col.className = "col-md-4 text-center mt-3 thumbnail-container";
+                col.innerHTML = `
+                    <p>${size.label}</p>
+                    <img src="${imgUrl}" alt="Thumbnail" class="img-fluid">
+                    <a href="${imgUrl}" download class="btn btn-success mt-2">Download</a>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function setLanguage() {
+            const languages = {
+                "en": { title: "YouTube Thumbnail Downloader", generateBtn: "Generate Thumbnails" },
+               /* "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures" },
+                "zh": { title: "YouTube缩略图下载器", generateBtn: "生成缩略图" },
+                "ja": { title: "YouTubeサムネイルダウンローダー", generateBtn: "サムネイルを生成" },
+                "es": { title: "Descargador de miniaturas de YouTube", generateBtn: "Generar miniaturas" },
+                "hi": { title: "यूट्यूब थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें" },
+                "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры" }*/
+            };
+            let userLang = navigator.language.substring(0, 2);
+            let lang = languages[userLang] || languages["en"];
+            document.getElementById("title").textContent = lang.title;
+            document.getElementById("generateBtn").textContent = lang.generateBtn;
+        }
+
+        setLanguage();
+    </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube थंबनेल डाउनलोडर</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/dist/umd/i18next.min.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LfavPIqAAAAAJsc_-_wAGXqmSVLNEK2tuZztTjX"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+        .content-container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .thumbnail-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .description, .faq-section {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .faq-section h2, .description h2 {
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .faq-item {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: white;
+            border-radius: 5px;
+        }
+        .faq-item h3 {
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+        }
+        .faq-item p {
+            font-size: 20px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS40NPSNGJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZS40NPSNGJ');
+</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">यूट्यूब थंबनेल डाउनलोडर</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">होम</a></li>
+                        <li class="nav-item"><a class="nav-link" href="privacy-policy.html">गोपनीयता नीति</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about-us.html">हमारे बारे में</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">संपर्क करें</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container content-container">
+        <h1 id="title">यूट्यूब थंबनेल डाउनलोडर</h1>
+        <input type="text" id="videoUrl" class="form-control mt-3" placeholder="YouTube URL दर्ज करें">
+        <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">थंबनेल जनरेट करें</button>
+        <div id="thumbnails" class="row mt-4"></div>
+
+        <!-- Description optimisée SEO -->
+        <section class="description">
+            <h2>YouTube वीडियो की थंबनेल सहेजें</h2>
+            <h2>YouTube थंबनेल को उच्च गुणवत्ता में डाउनलोड करें</h2>
+            <p>
+                YouTube थंबनेल को मुफ्त में उच्च गुणवत्ता में डाउनलोड करें! किसी भी YouTube वीडियो की थंबनेल को कुछ ही क्लिक में प्राप्त करें।
+                हमारे YouTube थंबनेल सहेजने वाले टूल के साथ, YouTube के लिए सर्वोत्तम थंबनेल को इष्टतम आकार (HQ, HD, SD) में प्राप्त करें।
+                क्रिएटर्स और मार्केटर्स के लिए आदर्श, हमारा YouTube थंबनेल जनरेटर आपको आपकी वीडियो के लिए सही छवि तक त्वरित पहुंच प्रदान करता है।
+                अभी हमारे YouTube Thumbnail Saver का उपयोग करें!
+            </p>
+        </section>
+
+        <!-- Section FAQ -->
+        <section id="faq" class="faq-section">
+            <h2>सामान्य प्रश्न</h2>
+            <div class="faq-item">
+                <h3>YouTube थंबनेल कैसे डाउनलोड करें?</h3>
+                <p>YouTube वीडियो का URL कॉपी करें, इसे इनपुट बॉक्स में पेस्ट करें, और "थंबनेल जनरेट करें" पर क्लिक करें। आकार चुनें और "डाउनलोड" पर क्लिक करें।</p>
+            </div>
+            <div class="faq-item">
+                <h3>कौन से आकार उपलब्ध हैं?</h3>
+                <p>हम कई आकार प्रदान करते हैं: HD (1920x1080), HQ (480x360), SD (640x480), MQ (320x180), और सामान्य छवि (120x90)।</p>
+            </div>
+            <div class="faq-item">
+                <h3>YouTube HD थंबनेल क्यों नहीं दिख रही है?</h3>
+                <p>यदि YouTube HD थंबनेल (1920x1080) नहीं दिख रही है, तो इसके निम्न कारण हो सकते हैं:<br>
+                    • वीडियो निजी या हटाई गई है: केवल सार्वजनिक वीडियो थंबनेल दिखाती हैं।<br>
+                    • वीडियो हाल ही में अपलोड की गई है: कभी-कभी YouTube को सभी रिज़ॉल्यूशन की छवियां जनरेट करने में समय लगता है।<br>
+                    • वीडियो में HD थंबनेल नहीं है: कुछ पुरानी वीडियो में 1920x1080 की छवि नहीं होती है।<br>
+                    • YouTube लिंक में त्रुटि: सुनिश्चित करें कि लिंक सही है और इस फॉर्मेट में है: https://www.youtube.com/watch?v=VIDEO_ID।<br>
+                    • YouTube द्वारा ब्लॉक: कुछ मामलों में, YouTube कॉपीराइट के कारण कुछ थंबनेल तक पहुंच को प्रतिबंधित कर सकता है।</p>
+            </div>
+            <div class="faq-item">
+                <h3>क्या YouTube थंबनेल डाउनलोड करना कानूनी है?</h3>
+                <p>YouTube थंबनेल कॉपीराइट द्वारा सुरक्षित हैं। बिना अनुमति के उनका पुन: उपयोग करना कानूनी समस्याएं पैदा कर सकता है।</p>
+            </div>
+            <div class="faq-item">
+                <h3>क्या यह सेवा मोबाइल पर काम करती है?</h3>
+                <p>हां, हमारा YouTube थंबनेल डाउनलोड टूल मोबाइल के लिए अनुकूलित है और iPhone, Android, टैबलेट और PC पर काम करता है।</p>
+            </div>
+            <div class="faq-item">
+                <h3>कुछ YouTube थंबनेल क्यों नहीं दिख रही हैं?</h3>
+                <p>यदि छवि लोड नहीं हो रही है:<br>
+                    सुनिश्चित करें कि YouTube वीडियो सार्वजनिक है और निजी या हटाई गई नहीं है।<br>
+                    सुनिश्चित करें कि आपने एक वैध लिंक पेस्ट किया है जो इस फॉर्मेट में है: https://www.youtube.com/watch?v=VIDEO_ID।</p>
+            </div>
+            <div class="faq-item">
+                <h3>क्या साइट कई भाषाओं में उपलब्ध है?</h3>
+                <p>हां, हमारा प्लेटफ़ॉर्म बहुभाषी है और आपके ब्राउज़र की भाषा के अनुसार अनुकूलित होता है। उपलब्ध भाषाएं: हिंदी, अंग्रेजी, स्पेनिश, चीनी, जापानी, और रूसी।</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 यूट्यूब थंबनेल डाउनलोड्स. सर्वाधिकार सुरक्षित।</p>
+            <div>
+                <a class="fb" href="https://web.facebook.com/profile.php?id=61573719356847" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a class="twtr" href="https://x.com/ThumbnailD17459" target="_blank" class="social-icon">
+                    <img src="icons8-twitter 3.svg" alt="X Logo" style="width: 35px; height: 35px;">
+                </a>
+                <a class="insta" href="https://www.instagram.com/mryass6095/#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+    <style>
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .fb, .twtr, .ytb, .linkdn, .insta {
+            margin-top: 10px;
+        }
+        .fb, .twtr, .ytb, .linkdn, .insta {
+            display: inline-block;
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .fb { color: #007bff; }
+        .twtr { color: #007bff; }
+        .insta { color: #E4405F; }
+    </style>
+
+    <script>
+        function getYouTubeID(url) {
+            let match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.*|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
+            return match ? match[1] : null;
+        }
+
+        function generateThumbnails() {
+            let url = document.getElementById("videoUrl").value;
+            let videoId = getYouTubeID(url);
+            if (!videoId) {
+                alert("अमान्य YouTube URL");
+                return;
+            }
+
+            let sizes = [
+                { label: "HQ (480x360)", size: "hqdefault.jpg" },
+                { label: "HD (1920x1080)", size: "maxresdefault.jpg" },
+                { label: "HD (1280x720)", size: "sddefault.jpg" },
+                { label: "SD (640x480)", size: "mqdefault.jpg" },
+                { label: "MQ (320x180)", size: "hqdefault.jpg" },
+                { label: "सामान्य छवि (120x90)", size: "default.jpg" }
+            ];
+
+            let container = document.getElementById("thumbnails");
+            container.innerHTML = "";
+
+            sizes.forEach(size => {
+                let imgUrl = `https://img.youtube.com/vi/${videoId}/${size.size}`;
+                let col = document.createElement("div");
+                col.className = "col-md-4 text-center mt-3 thumbnail-container";
+                col.innerHTML = `
+                    <p>${size.label}</p>
+                    <img src="${imgUrl}" alt="Thumbnail" class="img-fluid">
+                    <a href="${imgUrl}" download class="btn btn-success mt-2">डाउनलोड</a>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function setLanguage() {
+            const languages = {
+                /*"en": { title: "YouTube Thumbnail Downloader", generateBtn: "Generate Thumbnails" },
+                "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures" },
+                "zh": { title: "YouTube缩略图下载器", generateBtn: "生成缩略图" },
+                "ja": { title: "YouTubeサムネイルダウンローダー", generateBtn: "サムネイルを生成" },
+                "es": { title: "Descargador de miniaturas de YouTube", generateBtn: "Generar miniaturas" },*/
+                "hi": { title: "यूट्यूब थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें" },
+               /* "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры" }*/
+            };
+            let userLang = navigator.language.substring(0, 2);
+            let lang = languages[userLang] || languages["en"];
+            document.getElementById("title").textContent = lang.title;
+            document.getElementById("generateBtn").textContent = lang.generateBtn;
+        }
+
+        setLanguage();
+    </script>
+</body>
+</html>

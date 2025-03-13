@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube サムネイルダウンローダー</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/dist/umd/i18next.min.js"></script>
+        
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LfavPIqAAAAAJsc_-_wAGXqmSVLNEK2tuZztTjX"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+        .content-container {
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .thumbnail-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .description, .faq-section {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .faq-section h2, .description h2 {
+            text-align: center;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .faq-item {
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            background: white;
+            border-radius: 5px;
+        }
+        .faq-item h3 {
+            font-size: 18px;
+            color: #000;
+            font-weight: bold;
+        }
+        .faq-item p {
+            font-size: 20px;
+            color: #000;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background: #333;
+            color: white;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZS40NPSNGJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZS40NPSNGJ');
+</script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">YouTube サムネイルダウンローダー</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">ホーム</a></li>
+                        <li class="nav-item"><a class="nav-link" href="privacy-policy.html">プライバシーポリシー</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about-us.html">私たちについて</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container content-container">
+        <h1 id="title">YouTube サムネイルダウンローダー</h1>
+        <input type="text" id="videoUrl" class="form-control mt-3" placeholder="YouTubeのURLを入力">
+        <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">サムネイルを生成</button>
+        <div id="thumbnails" class="row mt-4"></div>
+
+        <!-- Description optimisée SEO -->
+        <section class="description">
+            <h2>YouTube動画のサムネイルを保存</h2>
+            <h2>高品質なYouTubeサムネイルをダウンロード</h2>
+            <p>
+                高品質なYouTubeサムネイルを無料でダウンロード！数回のクリックで、任意のYouTube動画のサムネイルを取得できます。
+                私たちのYouTubeサムネイル保存ツールを使用して、最適なサイズ（HQ、HD、SD）で最高のサムネイルを取得しましょう。
+                クリエイターやマーケターに最適なこのYouTubeサムネイルジェネレーターは、あなたの動画に最適な画像に素早くアクセスできます。
+                今すぐYouTube Thumbnail Saverをお試しください！
+            </p>
+        </section>
+
+        <!-- Section FAQ -->
+        <section id="faq" class="faq-section">
+            <h2>よくある質問</h2>
+            <div class="faq-item">
+                <h3>YouTubeサムネイルをダウンロードする方法は？</h3>
+                <p>YouTube動画のURLをコピーし、入力欄に貼り付けて、「サムネイルを生成」をクリックします。サイズを選択し、「ダウンロード」をクリックします。</p>
+            </div>
+            <div class="faq-item">
+                <h3>利用可能な画像サイズは？</h3>
+                <p>HD（1920x1080）、HQ（480x360）、SD（640x480）、MQ（320x180）、通常画像（120x90）など、複数のサイズを提供しています。</p>
+            </div>
+            <div class="faq-item">
+                <h3>YouTube HDサムネイルが表示されないのはなぜですか？</h3>
+                <p>YouTube HDサムネイル（1920x1080）が表示されない場合、以下の理由が考えられます：<br>
+                    • 動画が非公開または削除されている：公開動画のみサムネイルが表示されます。<br>
+                    • 動画が最近アップロードされた：YouTubeがすべての解像度のサムネイルを生成するのに時間がかかることがあります。<br>
+                    • 動画にHDサムネイルがない：特に古い動画には1920x1080の画像がない場合があります。<br>
+                    • YouTubeリンクのエラー：リンクが正しく、この形式であることを確認してください：https://www.youtube.com/watch?v=動画ID。<br>
+                    • YouTubeによるブロック：著作権の問題により、一部のサムネイルへのアクセスが制限される場合があります。</p>
+            </div>
+            <div class="faq-item">
+                <h3>YouTubeサムネイルをダウンロードするのは合法ですか？</h3>
+                <p>YouTubeサムネイルは著作権で保護されています。許可なく再利用すると法的な問題が発生する可能性があります。</p>
+            </div>
+            <div class="faq-item">
+                <h3>このサービスはモバイルで利用できますか？</h3>
+                <p>はい、私たちのYouTubeサムネイルダウンロードツールは、iPhone、Android、タブレット、PCに対応しています。</p>
+            </div>
+            <div class="faq-item">
+                <h3>一部のYouTubeサムネイルが表示されないのはなぜですか？</h3>
+                <p>画像が読み込まれない場合：<br>
+                    YouTube動画が公開されており、非公開または削除されていないことを確認してください。<br>
+                    リンクが正しく、この形式であることを確認してください：https://www.youtube.com/watch?v=動画ID。</p>
+            </div>
+            <div class="faq-item">
+                <h3>サイトは複数の言語で利用できますか？</h3>
+                <p>はい、私たちのプラットフォームは多言語対応で、ブラウザの言語に合わせて自動的に切り替わります。対応言語：日本語、英語、スペイン語、中国語、ヒンディー語、ロシア語。</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 YouTube Thumbnail Downloads. 全著作権所有。</p>
+            <div>
+                <a class="fb" href="https://web.facebook.com/profile.php?id=61573719356847" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a class="twtr" href="https://x.com/ThumbnailD17459" target="_blank" class="social-icon">
+                    <img src="icons8-twitter 3.svg" alt="X Logo" style="width: 35px; height: 35px;">
+                </a>
+                <a class="insta" href="https://www.instagram.com/mryass6095/#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
+    <style>
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .fb, .twtr, .ytb, .linkdn, .insta {
+            margin-top: 10px;
+        }
+        .fb, .twtr, .ytb, .linkdn, .insta {
+            display: inline-block;
+            margin: 0 10px;
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .fb { color: #007bff; }
+        .twtr { color: #007bff; }
+        .insta { color: #E4405F; }
+    </style>
+
+    <script>
+        function getYouTubeID(url) {
+            let match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.*|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
+            return match ? match[1] : null;
+        }
+
+        function generateThumbnails() {
+            let url = document.getElementById("videoUrl").value;
+            let videoId = getYouTubeID(url);
+            if (!videoId) {
+                alert("無効なYouTube URL");
+                return;
+            }
+
+            let sizes = [
+                { label: "HQ (480x360)", size: "hqdefault.jpg" },
+                { label: "HD (1920x1080)", size: "maxresdefault.jpg" },
+                { label: "HD (1280x720)", size: "sddefault.jpg" },
+                { label: "SD (640x480)", size: "mqdefault.jpg" },
+                { label: "MQ (320x180)", size: "hqdefault.jpg" },
+                { label: "通常画像 (120x90)", size: "default.jpg" }
+            ];
+
+            let container = document.getElementById("thumbnails");
+            container.innerHTML = "";
+
+            sizes.forEach(size => {
+                let imgUrl = `https://img.youtube.com/vi/${videoId}/${size.size}`;
+                let col = document.createElement("div");
+                col.className = "col-md-4 text-center mt-3 thumbnail-container";
+                col.innerHTML = `
+                    <p>${size.label}</p>
+                    <img src="${imgUrl}" alt="Thumbnail" class="img-fluid">
+                    <a href="${imgUrl}" download class="btn btn-success mt-2">ダウンロード</a>
+                `;
+                container.appendChild(col);
+            });
+        }
+
+        function setLanguage() {
+            const languages = {
+               /* "en": { title: "YouTube Thumbnail Downloader", generateBtn: "Generate Thumbnails" },
+                "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures" },
+                "zh": { title: "YouTube缩略图下载器", generateBtn: "生成缩略图" },*/
+                "ja": { title: "YouTubeサムネイルダウンローダー", generateBtn: "サムネイルを生成" },
+               /* "es": { title: "Descargador de miniaturas de YouTube", generateBtn: "Generar miniaturas" },
+                "hi": { title: "यूट्यूब थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें" },
+                "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры" }*/
+            };
+            let userLang = navigator.language.substring(0, 2);
+            let lang = languages[userLang] || languages["en"];
+            document.getElementById("title").textContent = lang.title;
+            document.getElementById("generateBtn").textContent = lang.generateBtn;
+        }
+
+        setLanguage();
+    </script>
+</body>
+</html>
