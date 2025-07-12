@@ -4,15 +4,19 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Thumbnail Downloader</title>
+    <title>Youtube thumbnail Image View and Download</title>
     <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
 
-    <meta name="description" content="Download YouTube thumbnails for free in HD, Full HD, 4K, and SD. A fast and easy tool to get high-quality images. Try it now!">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <meta name="description" content="Download youtube thumbnail Images and vimeo videos of all quality. This app lets you to download HD thumbnail images for free. Just enter the URL of the video for which thumbnail needs to be saved.">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <link rel="canonical" href="https://www.youtubethumbnaildownloads.com/">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.3/dist/umd/i18next.min.js"></script>
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -72,9 +76,42 @@
             background: #333;
             color: white;
         }
+        /* Styles pour le nouveau bloc d'affichage des miniatures */
+        .imgListing {
+            margin-top: 20px; /* Ajout d'une marge pour séparer du bouton */
+        }
+        .imgListing img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Assure que l'image prend toute la largeur disponible */
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px; /* Espace sous chaque image */
+        }
+        .imgListing h5 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #007bff; /* Couleur pour les titres des miniatures */
+            font-weight: bold;
+        }
+        .imgListing .download-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto 20px auto; /* Centre le bouton et ajoute de l'espace en dessous */
+            padding: 10px 20px;
+            background-color: #28a745; /* Couleur verte pour les boutons de téléchargement */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .imgListing .download-btn:hover {
+            background-color: #218838;
+        }
+
     </style>
-  <!-- Google analytics tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q85JKLG00E"></script>
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q85JKLG00E"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -83,8 +120,109 @@
   gtag('config', 'G-Q85JKLG00E');
 </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5573848500657485"
-     crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script>
 <script data-grow-initializer="">!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTo4NDdiMzgwNC1iZjMyLTQyMGItOTVlMS01ZDc2NzMyMGQyNzk=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Youtube Thumbnail Image View and Download",
+  "url": "https://www.youtubethumbnaildownloads.com/",
+  "description": "Download YouTube thumbnail Images and Vimeo videos of all quality. This app lets you to download HD thumbnail images for free. Just enter the URL of the video for which thumbnail needs to be saved.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "YouTube Thumbnail Downloads"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How to download a YouTube thumbnail?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Copy the YouTube video URL, paste it into the input box, then click \"Generate Thumbnails\". Select the size and click \"Download\"."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What image sizes are available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer multiple sizes: HD (1920x1080), HQ (480x360), SD (640x480), MQ (320x180), and Normal Image (120x90)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the YouTube HD thumbnail not showing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the YouTube HD thumbnail (1920x1080) is not displaying, it may be due to the following reasons: The video is private or deleted: Only public videos allow thumbnails to be displayed. The video is new: Sometimes, YouTube takes time to generate all thumbnail resolutions. The video does not have an HD thumbnail: Some videos, especially older ones, may not have a 1920x1080 image. YouTube link error: Ensure the link is correct and follows this format: https://www.youtube.com/watch?v=VIDEO_ID. Restricted by YouTube: In some cases, YouTube may limit access to certain thumbnails due to copyright restrictions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it legal to download a YouTube thumbnail?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "YouTube thumbnails are protected by copyright. Reusing them without permission may cause legal issues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this service work on mobile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our YouTube thumbnail downloader tool is mobile-friendly, optimized for iPhone, Android, tablets, and PCs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are some YouTube thumbnails not showing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the image doesn’t load: Make sure the YouTube video is public, not private or deleted. Ensure you’ve pasted a valid link in this format: https://www.youtube.com/watch?v=VIDEO_ID."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the website available in multiple languages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our platform is multilingual and adapts to your browser’s language. Available languages: French, English, Spanish, Chinese, Japanese, Hindi, and Russian."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://www.youtubethumbnaildownloads.com/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Téléchargeur de miniatures YouTube",
+      "item": "https://www.youtubethumbnaildownloads.com/"
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
     <script type="text/javascript">
@@ -99,7 +237,6 @@
 </script>
 
 
-    <!-- Navigation -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
@@ -119,14 +256,44 @@
         </nav>
     </header>
 
-    <!-- Page Content -->
     <div class="container content-container">
         <h1 id="title">YouTube Thumbnail Downloader</h1>
         <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Enter the YouTube URL">
         <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">Generate Thumbnails</button>
-        <div id="thumbnails" class="row mt-4"></div>
+        
+        <div id="imgListing" class='imgListing' style="width:100%;left:0px; display: none;">
+            <div id='topListing'>
+                <h5 class="right-click-info">Right Click and click on 'Save Image As..' to save the images.</h5>
+                
+                <h5 id='hdrestext'>HD Thumbnail Image (1920x1080)</h5>
+                <a id="hdreslink" class="download-btn" download>Download HD Thumbnail Image (1920x1080)</a>
+                <img id='maxres' src="" loading="eager" alt="HD YouTube Thumbnail (1920x1080)">
+                
+                <h5 id='hd720restext'>HD Thumbnail Image (1280x720)</h5>
+                <a id="hd720reslink" class="download-btn" download>Download HD Thumbnail Image (1280x720)</a>
+                <img id='hd720res' src="" loading="auto" alt="HD YouTube Thumbnail (1280x720)">
 
-        <!-- Description optimisée SEO -->
+                <h5 id='sdrestext'>SD Thumbnail Image (640x480)</h5>
+                <a id="sdreslink" class="download-btn" download>Download SD Thumbnail Image (640x480)</a>
+                <img id='sdres' src="" loading="auto" alt="SD YouTube Thumbnail (640x480)">
+            </div>
+
+            <div id='bottomListing'>
+                <h5 id='normalrestext'>Normal Thumbnail Image (480x360)</h5>
+                <a id="hqreslink" class="download-btn" download>Download Normal Thumbnail Image(480x360)</a>
+                <img id='hqres' src="" loading="lazy" alt="Normal YouTube Thumbnail (480x360)">
+                
+                <div id='extraYTImg'>
+                    <h5>Normal Image (320x180)</h5>
+                    <a id="mqreslink" class="download-btn" download>Download Normal Thumbnail Image(320x180)</a>
+                    <img id='mqres' src="" loading="lazy" alt="Normal YouTube Thumbnail (320x180)">
+
+                    <h5>Normal Image (120x90)</h5>
+                    <a id="defreslink" class="download-btn" download>Download Normal Thumbnail Image(120x90)</a>
+                    <img id='defres' src="" loading="lazy" alt="Normal YouTube Thumbnail (120x90)">
+                </div>
+            </div>
+        </div>
         <section class="description">
             <h2> Save YT Video Thumbnails </h2>
             <h2> Download YouTube Thumbnails in High Quality</h2>
@@ -138,7 +305,6 @@ Try our YouTube Thumbnail Saver now!
             </p>
         </section>
 
-        <!-- Section FAQ -->
         <section id="faq" class="faq-section">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
@@ -156,8 +322,7 @@ Try our YouTube Thumbnail Saver now!
                     The video is private or deleted: Only public videos allow thumbnails to be displayed.
                     The video is new: Sometimes, YouTube takes time to generate all thumbnail resolutions.
                     The video does not have an HD thumbnail: Some videos, especially older ones, may not have a 1920x1080 image.
-                    YouTube link error: Ensure the link is correct and follows this format: https://www.youtube.com/watch?v=VIDEO_ID.
-                    Restricted by YouTube: In some cases, YouTube may limit access to certain thumbnails due to copyright restrictions.</p>
+                    YouTube link error: Ensure the link is correct and follows this format: https://www.youtube.com/watch?v=VIDEO_ID. Restricted by YouTube: In some cases, YouTube may limit access to certain thumbnails due to copyright restrictions.</p>
             </div>
             <div class="faq-item">
                 <h3>Is it legal to download a YouTube thumbnail?</h3>
@@ -175,26 +340,25 @@ Try our YouTube Thumbnail Saver now!
                     Ensure you’ve pasted a valid link in this format: https://www.youtube.com/watch?v=VIDEO_ID.</p>
             </div>
             <div class="faq-item">
-            <h3> Is the website available in multiple languages?</h3>
+                <h3> Is the website available in multiple languages?</h3>
                 <p>Yes, our platform is multilingual and adapts to your browser’s language. Available languages: French, English, Spanish, Chinese, Japanese, Hindi, and Russian.</p>
             </div>
         </section>
 
         
 <footer class="footer">
-    <p>&copy; 2024 YouTube Thumbnail Downloads. Tous droits réservés.</p>
+    <p>© 2024 YouTube Thumbnail Downloads. Tous droits réservés.</p>
     <div >
         <a class="fb" href="https://web.facebook.com/profile.php?id=61573719356847" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
         <a class="twtr" href="https://x.com/ThumbnailD17459" target="_blank" class="social-icon">
             <img src="icons8-twitter 3.svg" alt="X Logo" style="width: 35px; height: 35px;">
         </a>
         <a class="insta" href="https://www.instagram.com/mryass6095/#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-       
-       
+        
+        
     </div>
 </footer>
 
-<!-- FontAwesome Icons -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 
 <style>
@@ -215,19 +379,10 @@ Try our YouTube Thumbnail Saver now!
         font-size: 24px;
         transition: color 0.3s;
     }
-    /*.social-icon:hover {
-        color: #007bff;
-        color: #007bff;
-        color: #E4405F;
-
-        color: #FF0000;
-    }*/
-    
+    /* Copied styles from your original code to maintain appearance */
     .fb{color: #007bff;}
     .twtr{color: #007bff;}
     .insta{color: #E4405F;}
-    /*.ytb{color: #FF0000;}*/
-   /* .linkdn{color: #007bff}*/
 
 </style>
 
@@ -248,40 +403,86 @@ Try our YouTube Thumbnail Saver now!
                 return;
             }
 
-            let sizes = [
-                { label: "HQ (480x360)", size: "hqdefault.jpg" },
-                { label: "HD (1920x1080)", size: "maxresdefault.jpg" },
-                { label: "HD (1280x720)", size: "sddefault.jpg" },
-                { label: "SD (640x480)", size: "mqdefault.jpg" },
-                { label: "MQ (320x180)", size: "hqdefault.jpg" },
-                { label: "Normal Image (120x90)", size: "default.jpg" }
-            ];
+            // Afficher le conteneur des miniatures
+            document.getElementById("imgListing").style.display = "block";
+            document.getElementById("topListing").style.display = "block";
+            document.getElementById("bottomListing").style.display = "block";
 
-            let container = document.getElementById("thumbnails");
-            container.innerHTML = "";
 
-            sizes.forEach(size => {
-                let imgUrl = `https://img.youtube.com/vi/${videoId}/${size.size}`;
-                let col = document.createElement("div");
-                col.className = "col-md-4 text-center mt-3 thumbnail-container";
-                col.innerHTML = `
-                    <p>${size.label}</p>
-                    <img src="${imgUrl}" alt="Thumbnail" class="img-fluid">
-                    <a href="${imgUrl}" download class="btn btn-success mt-2">Download</a>
-                `;
-                container.appendChild(col);
-            });
+            // Mettre à jour les images et les liens de téléchargement
+            // HD (1920x1080) - maxresdefault.jpg
+            let maxresImg = document.getElementById('maxres');
+            let hdresLink = document.getElementById('hdreslink');
+            let hdresText = document.getElementById('hdrestext');
+            let maxresUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`; // URL corrigée
+            maxresImg.src = maxresUrl;
+            maxresImg.alt = `Miniature YouTube HD (1920x1080) pour l'ID vidéo ${videoId}`;
+            hdresLink.href = maxresUrl;
+            hdresText.textContent = 'HD Thumbnail Image (1920x1080)'; 
+            hdresLink.textContent = 'Download HD Thumbnail Image (1920x1080)'; 
+
+            // NOUVELLE TAILLE : HD (1280x720) - hq720.jpg
+            let hd720resImg = document.getElementById('hd720res');
+            let hd720resLink = document.getElementById('hd720reslink');
+            let hd720resText = document.getElementById('hd720restext');
+            let hd720resUrl = `https://i.ytimg.com/vi/${videoId}/hq720.jpg`; // URL pour 1280x720
+            hd720resImg.src = hd720resUrl;
+            hd720resImg.alt = `Miniature YouTube HD (1280x720) pour l'ID vidéo ${videoId}`;
+            hd720resLink.href = hd720resUrl;
+            hd720resText.textContent = 'HD Thumbnail Image (1280x720)';
+            hd720resLink.textContent = 'Download HD Thumbnail Image (1280x720)';
+
+            // SD (640x480) - sddefault.jpg
+            let sdresImg = document.getElementById('sdres');
+            let sdresLink = document.getElementById('sdreslink');
+            let sdresText = document.getElementById('sdrestext');
+            let sdresUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`; // URL corrigée
+            sdresImg.src = sdresUrl;
+            sdresImg.alt = `Miniature YouTube SD (640x480) pour l'ID vidéo ${videoId}`;
+            sdresLink.href = sdresUrl;
+            sdresText.textContent = 'SD Thumbnail Image (640x480)';
+            sdresLink.textContent = 'Download SD Thumbnail Image (640x480)';
+
+            // HQ (480x360) - hqdefault.jpg
+            let hqresImg = document.getElementById('hqres');
+            let hqresLink = document.getElementById('hqreslink');
+            let normalresText = document.getElementById('normalrestext');
+            let hqresUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`; // URL corrigée
+            hqresImg.src = hqresUrl;
+            hqresImg.alt = `Miniature YouTube HQ (480x360) pour l'ID vidéo ${videoId}`;
+            hqresLink.href = hqresUrl;
+            normalresText.textContent = 'Normal Thumbnail Image (480x360)'; 
+            hqresLink.textContent = 'Download Normal Thumbnail Image (480x360)'; 
+
+            // MQ (320x180) - mqdefault.jpg
+            let mqresImg = document.getElementById('mqres');
+            let mqresLink = document.getElementById('mqreslink');
+            let mqresUrl = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`; // URL corrigée
+            mqresImg.src = mqresUrl;
+            mqresImg.alt = `Miniature YouTube MQ (320x180) pour l'ID vidéo ${videoId}`;
+            mqresLink.href = mqresUrl;
+            mqresLink.textContent = 'Download Normal Thumbnail Image (320x180)'; 
+
+
+            // Default (120x90) - default.jpg
+            let defresImg = document.getElementById('defres');
+            let defresLink = document.getElementById('defreslink');
+            let defresUrl = `https://i.ytimg.com/vi/${videoId}/default.jpg`; // URL corrigée
+            defresImg.src = defresUrl;
+            defresImg.alt = `Miniature YouTube par défaut (120x90) pour l'ID vidéo ${videoId}`;
+            defresLink.href = defresUrl;
+            defresLink.textContent = 'Download Normal Thumbnail Image (120x90)'; 
         }
 
         function setLanguage() {
             const languages = {
                 "en": { title: "YouTube Thumbnail Downloader", generateBtn: "Generate Thumbnails" },
-               /* "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures" },
+                "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures" },
                 "zh": { title: "YouTube缩略图下载器", generateBtn: "生成缩略图" },
                 "ja": { title: "YouTubeサムネイルダウンローダー", generateBtn: "サムネイルを生成" },
                 "es": { title: "Descargador de miniaturas de YouTube", generateBtn: "Generar miniaturas" },
                 "hi": { title: "यूट्यूब थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें" },
-                "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры" }*/
+                "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры" }
             };
             let userLang = navigator.language.substring(0, 2);
             let lang = languages[userLang] || languages["en"];
