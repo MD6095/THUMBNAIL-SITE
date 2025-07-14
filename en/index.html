@@ -113,6 +113,7 @@
             text-decoration: none;
             border-radius: 5px;
             text-align: center;
+            cursor: pointer; /* Indicateur de cliquabilité */
         }
         .imgListing .download-btn:hover {
             background-color: #218838;
@@ -274,37 +275,37 @@
                 <h5 class="right-click-info">Right Click and click on 'Save Image As..' to save the images.</h5>
                 
                 <h5 id='hdrestext'>HD Thumbnail Image (1920x1080)</h5>
-                <a id="hdreslink" class="download-btn" download>Download HD Thumbnail Image (1920x1080)</a>
+                <a id="hdreslink" class="download-btn" data-filename="youtube_thumbnail_hd.jpg">Download HD Thumbnail Image (1920x1080)</a>
                 <img id='maxres' src="" loading="eager" alt="HD YouTube Thumbnail (1920x1080)">
                 
                 <h5 id='hd720restext'>HD Thumbnail Image (1280x720)</h5>
-                <a id="hd720reslink" class="download-btn" download>Download HD Thumbnail Image (1280x720)</a>
+                <a id="hd720reslink" class="download-btn" data-filename="youtube_thumbnail_hd720.jpg">Download HD Thumbnail Image (1280x720)</a>
                 <img id='hd720res' src="" loading="auto" alt="HD YouTube Thumbnail (1280x720)">
 
                 <h5 id='sdrestext'>SD Thumbnail Image (640x480)</h5>
-                <a id="sdreslink" class="download-btn" download>Download SD Thumbnail Image (640x480)</a>
+                <a id="sdreslink" class="download-btn" data-filename="youtube_thumbnail_sd.jpg">Download SD Thumbnail Image (640x480)</a>
                 <img id='sdres' src="" loading="auto" alt="SD YouTube Thumbnail (640x480)">
             </div>
 
             <div id='bottomListing'>
                 <h5 id='normalrestext'>Normal Thumbnail Image (480x360)</h5>
-                <a id="hqreslink" class="download-btn" download>Download Normal Thumbnail Image(480x360)</a>
+                <a id="hqreslink" class="download-btn" data-filename="youtube_thumbnail_hq.jpg">Download Normal Thumbnail Image(480x360)</a>
                 <img id='hqres' src="" loading="lazy" alt="Normal YouTube Thumbnail (480x360)">
                 
                 <div id='extraYTImg'>
                     <h5>Normal Image (320x180)</h5>
-                    <a id="mqreslink" class="download-btn" download>Download Normal Thumbnail Image(320x180)</a>
+                    <a id="mqreslink" class="download-btn" data-filename="youtube_thumbnail_mq.jpg">Download Normal Thumbnail Image(320x180)</a>
                     <img id='mqres' src="" loading="lazy" alt="Normal YouTube Thumbnail (320x180)">
 
                     <h5>Normal Image (120x90)</h5>
-                    <a id="defreslink" class="download-btn" download>Download Normal Thumbnail Image(120x90)</a>
+                    <a id="defreslink" class="download-btn" data-filename="youtube_thumbnail_default.jpg">Download Normal Thumbnail Image(120x90)</a>
                     <img id='defres' src="" loading="lazy" alt="Normal YouTube Thumbnail (120x90)">
                 </div>
             </div>
         </div>
 
         <div id="vimeoThumbnails" class="imgListing" style="display: none;">
-            </div>
+        </div>
 
         <section class="description">
             <h2> Save YT Video Thumbnails </h2>
@@ -362,7 +363,7 @@ Try our YouTube Thumbnail Saver now!
             <div class="faq-item">
                 <h3> What is the importance of the YouTube thumbnail and what are its uses?</h3>
                 <p>The video thumbnail that’s attached to the video on such platforms as YouTube is the face of the video and can play an important role in a user's decision to click on it. Very often, you might need the thumbnail of a video separately for a variety of uses: to make a collage of different video thumbnails for your blog post, design a cover image for your channel using various video thumbnails, use it in a social media post in case it’s not generated automatically, and so on. <br> In any case, it’s great to have a tool that allows quickly grabbing and downloading the thumbnail on your device. Our YouTube Thumbnail Downloader does exactly that. It allows you to generate the thumbnail of any YouTube video and download it in just a few seconds. <br>
-                Click here to get started: <a href="https://www.youtubethumbnaildownloads.com/">https://www.youtubethumbnaildownloads.com/</a></p>
+                    Click here to get started: <a href="https://www.youtubethumbnaildownloads.com/">https://www.youtubethumbnaildownloads.com/</a></p>
             </div>
         </section>
 
@@ -407,6 +408,29 @@ Try our YouTube Thumbnail Saver now!
 </style>
 
     <script>
+        // Function to handle image download
+        async function downloadImage(imageUrl, filename) {
+            try {
+                const response = await fetch(imageUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url); // Clean up the object URL
+            } catch (error) {
+                console.error("Error downloading image:", error);
+                alert("Failed to download image. Please try again or right-click and 'Save Image As...'.");
+            }
+        }
+
         function getYouTubeID(url) {
             let match = url.match(/(?:youtube\.com\/(?:[^\/]+\/.*|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
             return match ? match[1] : null;
@@ -415,8 +439,6 @@ Try our YouTube Thumbnail Saver now!
         function generateThumbnails() {
             const url = document.getElementById("videoUrl").value.trim();
             const imgListing = document.getElementById("imgListing");
-            // Ensure these elements exist to avoid JavaScript errors
-            // Removed youtubeThumbnails and youtubeSmallerThumbnails as they were not defined in HTML
             const vimeoThumbnails = document.getElementById("vimeoThumbnails");
 
             // Hide all thumbnail sections initially
@@ -459,14 +481,25 @@ Try our YouTube Thumbnail Saver now!
                             let htmlContent = '<h5>Vimeo Thumbnails</h5>';
                             thumbnailSizes.forEach(size => {
                                 if (size.url) {
+                                    const filename = `vimeo_thumbnail_${size.name.toLowerCase()}.jpg`;
                                     htmlContent += `
                                         <h5>Vimeo Thumbnail (${size.name})</h5>
-                                        <a class="download-btn" href="${size.url}" download>Download Vimeo Thumbnail (${size.name})</a>
+                                        <a class="download-btn vimeo-download-btn" data-src="${size.url}" data-filename="${filename}">Download Vimeo Thumbnail (${size.name})</a>
                                         <img src="${size.url}" alt="Vimeo Thumbnail (${size.name})" loading="lazy" />
                                     `;
                                 }
                             });
                             vimeoThumbnails.innerHTML = htmlContent;
+
+                            // Attach click event listeners to Vimeo download buttons
+                            document.querySelectorAll('.vimeo-download-btn').forEach(button => {
+                                button.onclick = (event) => {
+                                    event.preventDefault(); // Prevent default link behavior
+                                    const imageUrl = button.getAttribute('data-src');
+                                    const filename = button.getAttribute('data-filename');
+                                    downloadImage(imageUrl, filename);
+                                };
+                            });
 
                         } else {
                             alert("No Vimeo video data found.");
@@ -498,64 +531,87 @@ Try our YouTube Thumbnail Saver now!
             let maxresImg = document.getElementById('maxres');
             let hdresLink = document.getElementById('hdreslink');
             let hdresText = document.getElementById('hdrestext');
-            let maxresUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`; // URL corrigée
+            let maxresUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
             maxresImg.src = maxresUrl;
             maxresImg.alt = `Miniature YouTube HD (1920x1080) pour l'ID vidéo ${videoId}`;
-            hdresLink.href = maxresUrl;
+            hdresLink.setAttribute('data-src', maxresUrl); // Store URL in data-src
             hdresText.textContent = 'HD Thumbnail Image (1920x1080)'; 
             hdresLink.textContent = 'Download HD Thumbnail Image (1920x1080)'; 
+            hdresLink.onclick = (event) => { // Attach click handler
+                event.preventDefault();
+                downloadImage(maxresUrl, hdresLink.getAttribute('data-filename'));
+            };
 
             // NOUVELLE TAILLE : HD (1280x720) - hq720.jpg
             let hd720resImg = document.getElementById('hd720res');
             let hd720resLink = document.getElementById('hd720reslink');
             let hd720resText = document.getElementById('hd720restext');
-            let hd720resUrl = `https://i.ytimg.com/vi/${videoId}/hq720.jpg`; // URL pour 1280x720
+            let hd720resUrl = `https://i.ytimg.com/vi/${videoId}/hq720.jpg`;
             hd720resImg.src = hd720resUrl;
             hd720resImg.alt = `Miniature YouTube HD (1280x720) pour l'ID vidéo ${videoId}`;
-            hd720resLink.href = hd720resUrl;
+            hd720resLink.setAttribute('data-src', hd720resUrl); // Store URL in data-src
             hd720resText.textContent = 'HD Thumbnail Image (1280x720)';
             hd720resLink.textContent = 'Download HD Thumbnail Image (1280x720)';
+            hd720resLink.onclick = (event) => { // Attach click handler
+                event.preventDefault();
+                downloadImage(hd720resUrl, hd720resLink.getAttribute('data-filename'));
+            };
 
             // SD (640x480) - sddefault.jpg
             let sdresImg = document.getElementById('sdres');
             let sdresLink = document.getElementById('sdreslink');
             let sdresText = document.getElementById('sdrestext');
-            let sdresUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`; // URL corrigée
+            let sdresUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`;
             sdresImg.src = sdresUrl;
             sdresImg.alt = `Miniature YouTube SD (640x480) pour l'ID vidéo ${videoId}`;
-            sdresLink.href = sdresUrl;
+            sdresLink.setAttribute('data-src', sdresUrl); // Store URL in data-src
             sdresText.textContent = 'SD Thumbnail Image (640x480)';
             sdresLink.textContent = 'Download SD Thumbnail Image (640x480)';
+            sdresLink.onclick = (event) => { // Attach click handler
+                event.preventDefault();
+                downloadImage(sdresUrl, sdresLink.getAttribute('data-filename'));
+            };
 
             // HQ (480x360) - hqdefault.jpg
             let hqresImg = document.getElementById('hqres');
             let hqresLink = document.getElementById('hqreslink');
             let normalresText = document.getElementById('normalrestext');
-            let hqresUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`; // URL corrigée
+            let hqresUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
             hqresImg.src = hqresUrl;
             hqresImg.alt = `Miniature YouTube HQ (480x360) pour l'ID vidéo ${videoId}`;
-            hqresLink.href = hqresUrl;
+            hqresLink.setAttribute('data-src', hqresUrl); // Store URL in data-src
             normalresText.textContent = 'Normal Thumbnail Image (480x360)'; 
             hqresLink.textContent = 'Download Normal Thumbnail Image (480x360)'; 
+            hqresLink.onclick = (event) => { // Attach click handler
+                event.preventDefault();
+                downloadImage(hqresUrl, hqresLink.getAttribute('data-filename'));
+            };
 
             // MQ (320x180) - mqdefault.jpg
             let mqresImg = document.getElementById('mqres');
             let mqresLink = document.getElementById('mqreslink');
-            let mqresUrl = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`; // URL corrigée
+            let mqresUrl = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
             mqresImg.src = mqresUrl;
             mqresImg.alt = `Miniature YouTube MQ (320x180) pour l'ID vidéo ${videoId}`;
-            mqresLink.href = mqresUrl;
+            mqresLink.setAttribute('data-src', mqresUrl); // Store URL in data-src
             mqresLink.textContent = 'Download Normal Thumbnail Image (320x180)'; 
-
+            mqresLink.onclick = (event) => { // Attach click handler
+                event.preventDefault();
+                downloadImage(mqresUrl, mqresLink.getAttribute('data-filename'));
+            };
 
             // Default (120x90) - default.jpg
             let defresImg = document.getElementById('defres');
             let defresLink = document.getElementById('defreslink');
-            let defresUrl = `https://i.ytimg.com/vi/${videoId}/default.jpg`; // URL corrigée
+            let defresUrl = `https://i.ytimg.com/vi/${videoId}/default.jpg`;
             defresImg.src = defresUrl;
             defresImg.alt = `Miniature YouTube par défaut (120x90) pour l'ID vidéo ${videoId}`;
-            defresLink.href = defresUrl;
+            defresLink.setAttribute('data-src', defresUrl); // Store URL in data-src
             defresLink.textContent = 'Download Normal Thumbnail Image (120x90)'; 
+            defresLink.onclick = (event) => { // Attach click handler
+                event.preventDefault();
+                downloadImage(defresUrl, defresLink.getAttribute('data-filename'));
+            };
         }
 
         function setLanguage() {
