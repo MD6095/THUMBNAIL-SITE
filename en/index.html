@@ -22,11 +22,11 @@
 <meta property="og:image:width" content="512" />
 <meta property="og:image:height" content="512" />
 <meta property="og:locale" content="en_US" />
-
-<link rel="apple-touch-icon" sizes="180x180" href="https://www.youtubethumbnaildownloads.com/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://www.youtubethumbnaildownloads.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://www.youtubethumbnaildownloads.com/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="https://www.youtubethumbnaildownloads.com/android-chrome-512x512.png">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
 
 <link rel="manifest" href="/site.webmanifest">
 
@@ -44,6 +44,7 @@
         .thumbnail-container img {
             max-width: 100%;
             height: auto;
+            
         }
         .description, .faq-section {
             font-size: 18px;
@@ -231,7 +232,28 @@
   ]
 }
 </script>
+<style>
+    .navbar-dark .navbar-nav .nav-link {
+        color: #ffffff !important;
+        font-weight: 500;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link:hover {
+        color: #00aced !important;
+       
+    }
+    .navbar-dark .navbar-brand {
+    color: #ffffff !important;     /* Blanc pur */
+    font-weight: 600;              /* Légèrement plus gras que les liens */
+    text-decoration: none;         /* Enlève soulignement */
+}
 
+.navbar-dark .navbar-brand:hover {
+    color: #00aced !important;     /* Couleur au survol */
+    
+}
+
+    </style>
 </head>
 <body>
     <script type="text/javascript">
@@ -249,7 +271,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.html">YouTube Thumbnail Downloader</a>
+                <a class="navbar-brand" href="index.html">YouTube Thumbnail Downloader and Vimeo Thumbnail Downloader</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -259,6 +281,26 @@
                         <li class="nav-item"><a class="nav-link" href="privacy-policy.html">Privacy Policy</a></li>
                         <li class="nav-item"><a class="nav-link" href="about-us.html"> About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              🌐 Language
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                              <li><a class="dropdown-item" href="/en/">🇬🇧 English</a></li>
+                              <li><a class="dropdown-item" href="/fr/">🇫🇷 Français</a></li>
+                              <li><a class="dropdown-item" href="/es/">🇪🇸 Español</a></li>
+                              <li><a class="dropdown-item" href="/nl/">🇳🇱 Nederlands</a></li>
+                              <li><a class="dropdown-item" href="/it/">🇮🇹 Italiano</a></li>
+                              <li><a class="dropdown-item" href="/ru/">🇷🇺 Русский</a></li>
+                              <li><a class="dropdown-item" href="/hi/">🇮🇳 हिन्दी</a></li>
+                              <li><a class="dropdown-item" href="/ja/">🇯🇵 日本語</a></li>
+                              <li><a class="dropdown-item" href="/zh/">🇨🇳 中文</a></li>
+                            </ul>
+                          </li>
+                          
+
+
                     </ul>
                 </div>
             </div>
@@ -267,12 +309,12 @@
 
     <div class="container content-container">
         <h1 id="title">YouTube Thumbnail Downloader</h1>
-        <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Enter the YouTube URL">
+        <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Enter the YouTube or Vimeo URL">
         <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">Generate Thumbnails</button>
         
         <div id="imgListing" class='imgListing' style="width:100%;left:0px; display: none;">
             <div id='topListing'>
-                <h5 class="right-click-info">Right Click and click on 'Save Image As..' to save the images.</h5>
+                <h5 class="right-click-info">Choose Your Preferred Size, Then Click The “Download Thumbnail Image” Button To Save It To Your Device.</h5>
                 
                 <h5 id='hdrestext'>HD Thumbnail Image (1920x1080)</h5>
                 <a id="hdreslink" class="download-btn" data-filename="youtube_thumbnail_hd.jpg">Download HD Thumbnail Image (1920x1080)</a>
@@ -308,26 +350,47 @@
         </div>
 
         <section class="description">
-            <h2> Save YT Video Thumbnails </h2>
-            <h2> Download YouTube Thumbnails in High Quality</h2>
-            <p>
-                Download YouTube thumbnails in high quality for free! Get the thumbnail image of any YouTube video – view and download instantly. in just a few clicks.
-With our YouTube thumbnail saver, retrieve the best YouTube thumbnail at optimal sizes (HQ, HD, SD).
-Perfect for creators and marketers, our YouTube thumbnail generator allows you to quickly access the ideal image YouTube and Vimeo thumbnail images of all quality
-for your videos.
-Try our YouTube Thumbnail Saver now!
-            </p>
+           
+            <h2> Save YT and Vimeo Video Thumbnails</h2>
+            <p style='text-align: center;margin:0 auto;max-width: 800px;padding-top: 0px;padding-bottom: 0px;font-size: 20px;margin-top:0px;'>Download youtube and vimeo thumbnail images of all quality for free. This application let you download thumbnails of all quality. Just paste the URL of the thumbnail video in the below input and click Get Thumbnail Image </h1>
+
         </section>
 
         <section id="faq" class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+          
+            <div class="faq-item">
+                <h3>Save YT and Vimeo Video Thumbnails-Download YouTube and Vimeo Thumbnails in High Quality</h3>
+                <p>Download YouTube thumbnails in high quality for free! Get the thumbnail image of any YouTube video – view and download instantly. in just a few clicks.
+                    With our YouTube thumbnail saver, retrieve the best YouTube thumbnail at optimal sizes (HQ, HD, SD...).
+                    Perfect for creators and marketers, our YouTube thumbnail generator allows you to quickly access the ideal image YouTube and Vimeo thumbnail images of all quality
+                    for your videos.
+                    Try our YouTube Thumbnail Saver now! <br>
+                    This free tool also allows you generate the thumbnail of any Vimeo video and download it to your device in just a few seconds without registration.  try our Vimeo Thumbnail Saver now! ! </p>
+            </div>
+            
             <div class="faq-item">
                 <h3>How to download a YouTube thumbnail?</h3>
-                <p>Copy the YouTube video URL, paste it into the input box, then click "Generate Thumbnails". Select the size and click "Download".</p>
+                <p>Get the URL of the YouTube video whose thumbnail you want. Copy it directly from your browser's address bar.
+                    You'll find an input box on our website. Paste the copied YouTube URL there.
+                    Click the "Generate Thumbnails" button. Our tool will then display various thumbnail sizes available for that YouTube video.
+                    Select the quality you prefer (e.g., HD, HQ, SD...) and click the "Download" button next to it.
+                    This process lets you quickly save YouTube thumbnails to your device in high quality, with no registration needed. It's an efficient way to grab YouTube video images for your projects or personal use.
+                    </p>
+            </div>
+            <div class="faq-item">
+                <h3>How to download a Vimeo thumbnail?</h3>
+                <p>Copy the Vimeo Video URL you want to get the thumbnail from and copy its URL from your browser's address bar.
+                    You'll find an input box above - paste the copied Vimeo URL there. and Click the "Generate Thumbnails button
+                    The tool will then display various thumbnail sizes available for that Vimeo video. Choose the quality you prefer (e.g., Large, Medium, Small) and click the "Download" button next to it.
+                    This process allows you to quickly save Vimeo thumbnails to your device in high quality without needing to register or go through complex steps. It's an efficient way to grab Vimeo video images for your projects or personal use.
+                    </p>
             </div>
             <div class="faq-item">
                 <h3>What image sizes are available?</h3>
-                <p>We provide YouTube thumbnail downloads in a range of qualities, including: HD (1920x1080), HD (1280x720), SD (640x480), HQ (480x360), MQ (320x180), and Default (120x90)</p>
+                <p>For YouTube thumbnail :<br> -We provide YouTube thumbnail downloads in a range of qualities, including: HD (1920x1080), HD (1280x720), SD (640x480), HQ (480x360), MQ (320x180), and Default (120x90) <br>
+                For Vimeo Thumbnail :<br> -We provide Vimeo thumbnails in the following approximate sizes, as indicated by the Vimeo API: Large, Medium, Small
+
+                </p>
             </div>
             <div class="faq-item">
                 <h3> Why is the YouTube HD thumbnail not showing?</h3>
@@ -342,11 +405,11 @@ Try our YouTube Thumbnail Saver now!
                 <h3>Is it legal to download a YouTube thumbnail?</h3>
                 <p>Of course it's 100% legal you can download any YouTube videos thumbnails, but as you know YouTube thumbnails are protected by copyright. Reusing them without permission may cause legal issues. <br>Whatever youtube screenshot you are downloading a copyright of respective on owner of that videos. If you want to use it in your work then you should ask for permission.
 
-                    Especially if you are reusing on YouTube then it's can create problem but if your plan is outside of YouTube. like use on website for creating logos or any Photoshop types of stuff then there is no any problem. You hardly receive any dmca complaint about related to that particular Youtube thumnail.</p>
+                    Especially if you are reusing on YouTube then it's can create problem but if your plan is outside of YouTube. like use on website for creating logos or any Photoshop types of stuff then there is no any problem. You hardly receive any dmca complaint about related to that particular Youtube thumbnail. <br> the same thing for vimeo thumbnails</p>
             </div>
-            <div class="faq-item">
+            <div class="faq-item"> 
                 <h3> Does this service work on mobile?</h3>
-                <p>Yes, our YouTube Thumbnail Grabber tool is mobile-friendly, optimized for iPhone, Android, tablets, and PCs. </p>
+                <p>Yes, our YouTube Thumbnail Grabber and Vimeo Thumbnail Downloader tool is mobile-friendly, optimized for iPhone, Android, tablets, and PCs. </p>
             </div>
             <div class="faq-item">
                 <h3> Why are some YouTube thumbnails not showing?</h3>
@@ -361,8 +424,8 @@ Try our YouTube Thumbnail Saver now!
             </div>
 
             <div class="faq-item">
-                <h3> What is the importance of the YouTube thumbnail and what are its uses?</h3>
-                <p>The video thumbnail that’s attached to the video on such platforms as YouTube is the face of the video and can play an important role in a user's decision to click on it. Very often, you might need the thumbnail of a video separately for a variety of uses: to make a collage of different video thumbnails for your blog post, design a cover image for your channel using various video thumbnails, use it in a social media post in case it’s not generated automatically, and so on. <br> In any case, it’s great to have a tool that allows quickly grabbing and downloading the thumbnail on your device. Our YouTube Thumbnail Downloader does exactly that. It allows you to generate the thumbnail of any YouTube video and download it in just a few seconds. <br>
+                <h3> What is the importance of the YouTube and Vimeo thumbnail and what are its uses?</h3>
+                <p>The video thumbnail that’s attached to the video on such platforms as YouTube is the face of the video and can play an important role in a user's decision to click on it. Very often, you might need the thumbnail of a video separately for a variety of uses: to make a collage of different video thumbnails for your blog post, design a cover image for your channel using various video thumbnails, use it in a social media post in case it’s not generated automatically, and so on. <br> In any case, it’s great to have a tool that allows quickly grabbing and downloading the thumbnail on your device. Our YouTube Thumbnail Downloader does exactly that. It allows you to generate the thumbnail of any YouTube and vimeo video, and download it in just a few seconds. <br>
                     Click here to get started: <a href="https://www.youtubethumbnaildownloads.com/">https://www.youtubethumbnaildownloads.com/</a></p>
             </div>
         </section>
@@ -448,7 +511,7 @@ Try our YouTube Thumbnail Saver now!
 
             // 🎬 VIMEO LINK
             if (url.includes("vimeo.com")) {
-                const vimeoIdMatch = url.match(/vimeo\.com\/(\d+)/);
+                const vimeoIdMatch = url.match(/vimeo\.com\/(?:[a-zA-Z0-9_-]+\/)*(\d+)/);
                 if (!vimeoIdMatch) {
                     alert("Invalid Vimeo URL");
                     return;
@@ -616,12 +679,12 @@ Try our YouTube Thumbnail Saver now!
 
         function setLanguage() {
             const languages = {
-                "en": { title: "YouTube Thumbnail Downloader", generateBtn: "Generate Thumbnails", placeholder: "Enter the YouTube URL" },
-                "fr": { title: "Téléchargeur de miniatures YouTube", generateBtn: "Générer des miniatures", placeholder: "Entrez l'URL YouTube" },
+                "en": { title: "YouTube and Vimeo Thumbnail Downloader", generateBtn: "Generate Thumbnails", placeholder: "Enter the YouTube or Vimeo URL" },
+                "fr": { title: "Téléchargeur miniature YouTube et Vimeo", generateBtn: "Générer des miniatures", placeholder: "Entrez l'URL YouTube" },
                 "zh": { title: "YouTube缩略图下载器", generateBtn: "生成缩略图", placeholder: "输入YouTube网址" },
                 "ja": { title: "YouTubeサムネイルダウンローダー", generateBtn: "サムネイルを生成", placeholder: "YouTubeのURLを入力してください" },
-                "es": { title: "Descargador de miniaturas de YouTube", generateBtn: "Generar miniaturas", placeholder: "Introduce la URL de YouTube" },
-                "hi": { title: "यूट्यूब थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें", placeholder: "यूट्यूब यूआरएल दर्ज करें" },
+                "es": { title: "Descargador de miniaturas de YouTube y Vimeo", generateBtn: "Generar miniaturas", placeholder: "Introduce la URL de YouTube" },
+                "hi": { title: "YouTube और Vimeo थंबनेल डाउनलोडर", generateBtn: "थंबनेल जनरेट करें", placeholder: "यूट्यूब यूआरएल दर्ज करें" },
                 "ru": { title: "Загрузчик миниатюр YouTube", generateBtn: "Сгенерировать миниатюры", placeholder: "Введите URL YouTube" }
             };
             let userLang = navigator.language.substring(0, 2);
