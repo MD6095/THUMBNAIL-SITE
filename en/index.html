@@ -120,6 +120,61 @@
             background-color: #218838;
         }
 
+/* 💠 Style commun aux bannières latérales */
+.side-banner {
+  position: relative;              /* ⚠️ PAS absolute → suit le scroll */
+  width: 130px;                    /* Ta largeur choisie */
+  height: auto;
+  margin-top: 35px;              /* Décalage sous la navbar */
+  margin-bottom: 40px;
+  z-index: 10;
+}
+
+/* 🟦 Bannière gauche */
+.left-banner {
+  float: left;
+  margin-left: 3px;
+}
+
+/* 🟨 Bannière droite */
+.right-banner {
+  float: right;
+  margin-right: 3px;
+}
+
+/* ❌ Bouton de fermeture carré */
+.close-banner {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #070100;      /* Couleur foncée */
+  color: white;
+  border: none;
+  border-radius: 3px;             /* 👈 Carré (léger arrondi si tu veux) */
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 22px;
+  cursor: pointer;
+  z-index: 99;
+}
+
+/* ➕ Position spécifique pour la bannière gauche */
+.left-banner .close-banner {
+  left: 5px;
+  right: auto;
+}
+
+/* 🔧 Responsive : Masquer les bannières sur petits écrans */
+@media (max-width: 992px) {
+  .side-banner {
+    display: none;
+  }
+}
+
+
+
     </style>
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q85JKLG00E"></script>
 <script>
@@ -252,6 +307,18 @@
     color: #00aced !important;     /* Couleur au survol */
     
 }
+/* style de bannier ads horizontal  */
+.top-banner-adsense {
+    width: 100%;
+    max-width: 1020px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
 
     </style>
 </head>
@@ -306,9 +373,54 @@
             </div>
         </nav>
     </header>
+    <div class="top-banner-adsense">
+        <ins class="adsbygoogle"
+             style="display:block; width:100%; height:60px;"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="YYYYYYYYYY"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+
+<!-- 🟦 Left Banner -->
+<div class="side-banner left-banner" lang="en" aria-label="Left ad banner">
+    <button class="close-banner" onclick="this.parentElement.remove()">×</button>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXX"
+         data-ad-slot="YYYYYYYYYY"
+         data-ad-format="vertical"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  
+  <!-- 🟨 Right Banner -->
+  <div class="side-banner right-banner" lang="en" aria-label="Right ad banner">
+    <button class="close-banner" onclick="this.parentElement.remove()">×</button>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXX"
+         data-ad-slot="ZZZZZZZZZZ"
+         data-ad-format="vertical"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+  
+
+
 
     <div class="container content-container">
-        <h1 id="title">YouTube Thumbnail Downloader</h1>
+       
+<!-- Google AdSense Banner alignée-->
+
+
         <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Enter the YouTube or Vimeo URL">
         <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">Generate Thumbnails</button>
         
