@@ -493,7 +493,7 @@
       <h1 id="title">YouTube and Vimeo Thumbnail Download</h1>
         <input type="text" id="videoUrl" class="form-control mt-3" placeholder="Enter the YouTube or Vimeo URL">
         <button class="btn btn-primary mt-2" onclick="generateThumbnails()" id="generateBtn">Generate Thumbnails</button>
-        
+        <div id="errorMessage" class="alert alert-danger mt-2" style="display: none;"></div>
         <div id="imgListing" class='imgListing' style="width:100%;left:0px; display: none;">
             <div id='topListing'>
                 <h5 class="right-click-info">Choose Your Preferred Size, Then Click The “Download Thumbnail Image” Button To Save It To Your Device.</h5>
@@ -684,187 +684,199 @@
       return match ? match[1] : null;
   }
 
+//la nouvelle fonction displayError() et clearErrors()
+
+  function displayError(message) {
+    const errorMessageElement = document.getElementById("errorMessage");
+    errorMessageElement.textContent = message;
+    errorMessageElement.style.display = "block"; // Show the error message
+}
+
+function clearErrors() {
+    const errorMessageElement = document.getElementById("errorMessage");
+    errorMessageElement.textContent = "";
+    errorMessageElement.style.display = "none"; // Hide the error message
+}
+
+
   // Function to generate and display thumbnails based on URL type (YouTube or Vimeo)
-  function generateThumbnails() {
-      const url = document.getElementById("videoUrl").value.trim();
-      const imgListing = document.getElementById("imgListing"); // Container for YouTube thumbnails
-      const vimeoThumbnails = document.getElementById("vimeoThumbnails"); // Container for Vimeo thumbnails
+  // Function to generate and display thumbnails based on URL type (YouTube or Vimeo)
+function generateThumbnails() {
+    clearErrors(); // Clear any previous error messages
+    const url = document.getElementById("videoUrl").value.trim();
+    const imgListing = document.getElementById("imgListing"); // Container for YouTube thumbnails
+    const vimeoThumbnails = document.getElementById("vimeoThumbnails"); // Container for Vimeo thumbnails
 
-      // Hide all thumbnail sections initially
-      imgListing.style.display = "none";
-      vimeoThumbnails.style.display = "none";
-      vimeoThumbnails.innerHTML = ''; // Clear previous Vimeo thumbnails
+    // Hide all thumbnail sections initially
+    imgListing.style.display = "none";
+    vimeoThumbnails.style.display = "none";
+    vimeoThumbnails.innerHTML = ''; // Clear previous Vimeo thumbnails
 
-      // Handle Vimeo URLs
-      if (url.includes("vimeo.com")) {
-          const vimeoIdMatch = url.match(/vimeo\.com\/(?:[a-zA-Z0-9_-]+\/)*(\d+)/);
-          if (!vimeoIdMatch) {
-              alert("Invalid Vimeo URL");
-              return;
-          }
+    // Handle Vimeo URLs
+    if (url.includes("vimeo.com")) {
+        const vimeoIdMatch = url.match(/vimeo\.com\/(?:[a-zA-Z0-9_-]+\/)*(\d+)/);
+        if (!vimeoIdMatch) {
+            displayError("Invalid Vimeo URL. Please check your link.");
+            return;
+        }
 
-          const vimeoId = vimeoIdMatch[1];
-          fetch(`https://vimeo.com/api/v2/video/${vimeoId}.json`)
-              .then(res => {
-                  if (!res.ok) {
-                      throw new Error(`HTTP error! status: ${res.status}`);
-                  }
-                  return res.json();
-              })
-              .then(data => {
-                  if (data && data.length > 0) {
-                      const videoData = data[0];
-                      // Display the Vimeo thumbnails in the vimeoThumbnails div
-                      vimeoThumbnails.style.display = "block";
+        const vimeoId = vimeoIdMatch[1];
+        fetch(`https://vimeo.com/api/v2/video/${vimeoId}.json`)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (data && data.length > 0) {
+                    const videoData = data[0];
+                    vimeoThumbnails.style.display = "block";
 
-                      const thumbnailSizes = [
-                          { name: "Large", url: videoData.thumbnail_large },
-                          { name: "Medium", url: videoData.thumbnail_medium },
-                          { name: "Small", url: videoData.thumbnail_small }
-                          // Add more Vimeo thumbnail sizes if the API provides them and you need them
-                      ];
+                    const thumbnailSizes = [
+                        { name: "Large", url: videoData.thumbnail_large },
+                        { name: "Medium", url: videoData.thumbnail_medium },
+                        { name: "Small", url: videoData.thumbnail_small }
+                    ];
 
-                      let htmlContent = '<h5>Vimeo Thumbnails</h5>';
-                      thumbnailSizes.forEach(size => {
-                          if (size.url) {
-                              const filename = `vimeo_thumbnail_${size.name.toLowerCase()}_${vimeoId}.jpg`; // Added vimeoId to filename
-                              htmlContent += `
-                                  <h5>Vimeo Thumbnail (${size.name})</h5>
-                                  <a class="download-btn vimeo-download-btn" data-src="${size.url}" data-filename="${filename}">Download Vimeo Thumbnail (${size.name})</a>
-                                  <img src="${size.url}" alt="Vimeo Thumbnail (${size.name}) for video ID ${vimeoId}" loading="lazy" />
-                              `;
-                          }
-                      });
-                      vimeoThumbnails.innerHTML = htmlContent;
+                    let htmlContent = '<h5>Vimeo Thumbnails</h5>';
+                    thumbnailSizes.forEach(size => {
+                        if (size.url) {
+                            const filename = `vimeo_thumbnail_${size.name.toLowerCase()}_${vimeoId}.jpg`;
+                            htmlContent += `
+                                <h5>Vimeo Thumbnail (${size.name})</h5>
+                                <a class="download-btn vimeo-download-btn" data-src="${size.url}" data-filename="${filename}">Download Vimeo Thumbnail (${size.name})</a>
+                                <img src="${size.url}" alt="Vimeo Thumbnail (${size.name}) for video ID ${vimeoId}" loading="lazy" />
+                            `;
+                        }
+                    });
+                    vimeoThumbnails.innerHTML = htmlContent;
 
-                      // Attach click event listeners to Vimeo download buttons
-                      document.querySelectorAll('.vimeo-download-btn').forEach(button => {
-                          button.onclick = (event) => {
-                              event.preventDefault(); // Prevent default link behavior
-                              const imageUrl = button.getAttribute('data-src');
-                              const filename = button.getAttribute('data-filename');
-                              downloadImage(imageUrl, filename);
-                          };
-                      });
+                    document.querySelectorAll('.vimeo-download-btn').forEach(button => {
+                        button.onclick = (event) => {
+                            event.preventDefault();
+                            const imageUrl = button.getAttribute('data-src');
+                            const filename = button.getAttribute('data-filename');
+                            downloadImage(imageUrl, filename);
+                        };
+                    });
+                } else {
+                    displayError("No Vimeo video data found.");
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching Vimeo thumbnail:", error);
+                displayError("Failed to fetch Vimeo thumbnail. Please check the URL or try again later.");
+            });
+        return; // Important: this return exits the function if it's a Vimeo URL
+    }
 
-                  } else {
-                      alert("No Vimeo video data found.");
-                  }
-              })
-              .catch(error => {
-                  console.error("Error fetching Vimeo thumbnail:", error);
-                  alert("Failed to fetch Vimeo thumbnail. Please check the URL or try again later.");
-              });
+    // Handle YouTube URLs
+    // TOUT LE CODE YOUTUBE DOIT ÊTRE ICI
+    let videoId = getYouTubeID(url);
+    if (!videoId) {
+        displayError("Invalid YouTube URL. Please check your link.");
+        return;
+    }
 
-          return; // Exit the function after handling Vimeo
-      }
+    // Display YouTube thumbnail containers
+    document.getElementById("imgListing").style.display = "block";
+    document.getElementById("topListing").style.display = "block";
+    document.getElementById("bottomListing").style.display = "block";
 
-      // Handle YouTube URLs
-      let videoId = getYouTubeID(url);
-      if (!videoId) {
-          alert("Invalid YouTube URL");
-          return;
-      }
+    // Update images and download links for YouTube thumbnails
+    // HD (1920x1080) - maxresdefault.jpg
+    let maxresImg = document.getElementById('maxres');
+    let hdresLink = document.getElementById('hdreslink');
+    let hdresText = document.getElementById('hdrestext');
+    let maxresUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+    maxresImg.src = maxresUrl;
+    maxresImg.alt = `YouTube Video Thumbnail in HD 1920x1080 resolution for ID ${videoId}`;
+    hdresLink.setAttribute('data-src', maxresUrl); // Store URL in data-src
+    hdresLink.setAttribute('data-filename', `youtube_thumbnail_1920x1080_${videoId}.jpg`); // Add filename
+    hdresText.textContent = 'HD Thumbnail Image (1920x1080)';
+    hdresLink.textContent = 'Download HD Thumbnail Image (1920x1080)';
+    hdresLink.onclick = (event) => { // Attach click handler
+        event.preventDefault();
+        downloadImage(maxresUrl, hdresLink.getAttribute('data-filename'));
+    };
 
-      // Display YouTube thumbnail containers
-      document.getElementById("imgListing").style.display = "block";
-      document.getElementById("topListing").style.display = "block";
-      document.getElementById("bottomListing").style.display = "block";
+    // NEW SIZE: HD (1280x720) - hq720.jpg
+    let hd720resImg = document.getElementById('hd720res');
+    let hd720resLink = document.getElementById('hd720reslink');
+    let hd720resText = document.getElementById('hd720restext');
+    let hd720resUrl = `https://i.ytimg.com/vi/${videoId}/hq720.jpg`;
+    hd720resImg.src = hd720resUrl;
+    hd720resImg.alt = `YouTube HD Thumbnail (1280x720) for video ID ${videoId}`;
+    hd720resLink.setAttribute('data-src', hd720resUrl); // Store URL in data-src
+    hd720resLink.setAttribute('data-filename', `youtube_thumbnail_1280x720_${videoId}.jpg`); // Add filename
+    hd720resText.textContent = 'HD Thumbnail Image (1280x720)';
+    hd720resLink.textContent = 'Download HD Thumbnail Image (1280x720)';
+    hd720resLink.onclick = (event) => { // Attach click handler
+        event.preventDefault();
+        downloadImage(hd720resUrl, hd720resLink.getAttribute('data-filename'));
+    };
 
+    // SD (640x480) - sddefault.jpg
+    let sdresImg = document.getElementById('sdres');
+    let sdresLink = document.getElementById('sdreslink');
+    let sdresText = document.getElementById('sdrestext');
+    let sdresUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`;
+    sdresImg.src = sdresUrl;
+    sdresImg.alt = `YouTube SD Thumbnail (640x480) for video ID ${videoId}`;
+    sdresLink.setAttribute('data-src', sdresUrl); // Store URL in data-src
+    sdresLink.setAttribute('data-filename', `youtube_thumbnail_640x480_${videoId}.jpg`); // Add filename
+    sdresText.textContent = 'SD Thumbnail Image (640x480)';
+    sdresLink.textContent = 'Download SD Thumbnail Image (640x480)';
+    sdresLink.onclick = (event) => { // Attach click handler
+        event.preventDefault();
+        downloadImage(sdresUrl, sdresLink.getAttribute('data-filename'));
+    };
 
-      // Update images and download links for YouTube thumbnails
-      // HD (1920x1080) - maxresdefault.jpg
-      let maxresImg = document.getElementById('maxres');
-      let hdresLink = document.getElementById('hdreslink');
-      let hdresText = document.getElementById('hdrestext');
-      let maxresUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
-      maxresImg.src = maxresUrl;
-      maxresImg.alt = `YouTube Video Thumbnail in HD 1920x1080 resolution for ID ${videoId}`;
-      hdresLink.setAttribute('data-src', maxresUrl); // Store URL in data-src
-      hdresLink.setAttribute('data-filename', `youtube_thumbnail_1920x1080_${videoId}.jpg`); // Add filename
-      hdresText.textContent = 'HD Thumbnail Image (1920x1080)'; 
-      hdresLink.textContent = 'Download HD Thumbnail Image (1920x1080)'; 
-      hdresLink.onclick = (event) => { // Attach click handler
-          event.preventDefault();
-          downloadImage(maxresUrl, hdresLink.getAttribute('data-filename'));
-      };
+    // HQ (480x360) - hqdefault.jpg
+    let hqresImg = document.getElementById('hqres');
+    let hqresLink = document.getElementById('hqreslink');
+    let normalresText = document.getElementById('normalrestext');
+    let hqresUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+    hqresImg.src = hqresUrl;
+    hqresImg.alt = `YouTube HQ Thumbnail (480x360) for video ID ${videoId}`;
+    hqresLink.setAttribute('data-src', hqresUrl); // Store URL in data-src
+    hqresLink.setAttribute('data-filename', `youtube_thumbnail_480x360_${videoId}.jpg`); // Add filename
+    normalresText.textContent = 'Normal Thumbnail Image (480x360)';
+    hqresLink.textContent = 'Download Normal Thumbnail Image (480x360)';
+    hqresLink.onclick = (event) => { // Attach click handler
+        event.preventDefault();
+        downloadImage(hqresUrl, hqresLink.getAttribute('data-filename'));
+    };
 
-      // NEW SIZE: HD (1280x720) - hq720.jpg
-      let hd720resImg = document.getElementById('hd720res');
-      let hd720resLink = document.getElementById('hd720reslink');
-      let hd720resText = document.getElementById('hd720restext');
-      let hd720resUrl = `https://i.ytimg.com/vi/${videoId}/hq720.jpg`;
-      hd720resImg.src = hd720resUrl;
-      hd720resImg.alt = `YouTube HD Thumbnail (1280x720) for video ID ${videoId}`;
-      hd720resLink.setAttribute('data-src', hd720resUrl); // Store URL in data-src
-      hd720resLink.setAttribute('data-filename', `youtube_thumbnail_1280x720_${videoId}.jpg`); // Add filename
-      hd720resText.textContent = 'HD Thumbnail Image (1280x720)';
-      hd720resLink.textContent = 'Download HD Thumbnail Image (1280x720)';
-      hd720resLink.onclick = (event) => { // Attach click handler
-          event.preventDefault();
-          downloadImage(hd720resUrl, hd720resLink.getAttribute('data-filename'));
-      };
+    // MQ (320x180) - mqdefault.jpg
+    let mqresImg = document.getElementById('mqres');
+    let mqresLink = document.getElementById('mqreslink');
+    let mqresUrl = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+    mqresImg.src = mqresUrl;
+    mqresImg.alt = `YouTube MQ Thumbnail (320x180) for video ID ${videoId}`;
+    mqresLink.setAttribute('data-src', mqresUrl); // Store URL in data-src
+    mqresLink.setAttribute('data-filename', `youtube_thumbnail_320x180_${videoId}.jpg`); // Add filename
+    mqresLink.textContent = 'Download Normal Thumbnail Image (320x180)';
+    mqresLink.onclick = (event) => { // Attach click handler
+        event.preventDefault();
+        downloadImage(mqresUrl, mqresLink.getAttribute('data-filename'));
+    };
 
-      // SD (640x480) - sddefault.jpg
-      let sdresImg = document.getElementById('sdres');
-      let sdresLink = document.getElementById('sdreslink');
-      let sdresText = document.getElementById('sdrestext');
-      let sdresUrl = `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`;
-      sdresImg.src = sdresUrl;
-      sdresImg.alt = `YouTube SD Thumbnail (640x480) for video ID ${videoId}`;
-      sdresLink.setAttribute('data-src', sdresUrl); // Store URL in data-src
-      sdresLink.setAttribute('data-filename', `youtube_thumbnail_640x480_${videoId}.jpg`); // Add filename
-      sdresText.textContent = 'SD Thumbnail Image (640x480)';
-      sdresLink.textContent = 'Download SD Thumbnail Image (640x480)';
-      sdresLink.onclick = (event) => { // Attach click handler
-          event.preventDefault();
-          downloadImage(sdresUrl, sdresLink.getAttribute('data-filename'));
-      };
-
-      // HQ (480x360) - hqdefault.jpg
-      let hqresImg = document.getElementById('hqres');
-      let hqresLink = document.getElementById('hqreslink');
-      let normalresText = document.getElementById('normalrestext');
-      let hqresUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-      hqresImg.src = hqresUrl;
-      hqresImg.alt = `YouTube HQ Thumbnail (480x360) for video ID ${videoId}`;
-      hqresLink.setAttribute('data-src', hqresUrl); // Store URL in data-src
-      hqresLink.setAttribute('data-filename', `youtube_thumbnail_480x360_${videoId}.jpg`); // Add filename
-      normalresText.textContent = 'Normal Thumbnail Image (480x360)'; 
-      hqresLink.textContent = 'Download Normal Thumbnail Image (480x360)'; 
-      hqresLink.onclick = (event) => { // Attach click handler
-          event.preventDefault();
-          downloadImage(hqresUrl, hqresLink.getAttribute('data-filename'));
-      };
-
-      // MQ (320x180) - mqdefault.jpg
-      let mqresImg = document.getElementById('mqres');
-      let mqresLink = document.getElementById('mqreslink');
-      let mqresUrl = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
-      mqresImg.src = mqresUrl;
-      mqresImg.alt = `YouTube MQ Thumbnail (320x180) for video ID ${videoId}`;
-      mqresLink.setAttribute('data-src', mqresUrl); // Store URL in data-src
-      mqresLink.setAttribute('data-filename', `youtube_thumbnail_320x180_${videoId}.jpg`); // Add filename
-      mqresLink.textContent = 'Download Normal Thumbnail Image (320x180)'; 
-      mqresLink.onclick = (event) => { // Attach click handler
-          event.preventDefault();
-          downloadImage(mqresUrl, mqresLink.getAttribute('data-filename'));
-      };
-
-      // Default (120x90) - default.jpg
-      let defresImg = document.getElementById('defres');
-      let defresLink = document.getElementById('defreslink');
-      let defresUrl = `https://i.ytimg.com/vi/${videoId}/default.jpg`;
-      defresImg.src = defresUrl;
-      defresImg.alt = `YouTube Default Thumbnail (120x90) for video ID ${videoId}`;
-      defresLink.setAttribute('data-src', defresUrl); // Store URL in data-src
-      defresLink.setAttribute('data-filename', `youtube_thumbnail_120x90_${videoId}.jpg`); // Add filename
-      defresLink.textContent = 'Download Normal Thumbnail Image (120x90)'; 
-      defresLink.onclick = (event) => { // Attach click handler
-          event.preventDefault();
-          downloadImage(defresUrl, defresLink.getAttribute('data-filename'));
-      };
-  }
+    // Default (120x90) - default.jpg
+    let defresImg = document.getElementById('defres');
+    let defresLink = document.getElementById('defreslink');
+    let defresUrl = `https://i.ytimg.com/vi/${videoId}/default.jpg`;
+    defresImg.src = defresUrl;
+    defresImg.alt = `YouTube Default Thumbnail (120x90) for video ID ${videoId}`;
+    defresLink.setAttribute('data-src', defresUrl); // Store URL in data-src
+    defresLink.setAttribute('data-filename', `youtube_thumbnail_120x90_${videoId}.jpg`); // Add filename
+    defresLink.textContent = 'Download Normal Thumbnail Image (120x90)';
+    defresLink.onclick = (event) => { // Attach click handler
+        event.preventDefault();
+        downloadImage(defresUrl, defresLink.getAttribute('data-filename'));
+    };
+} // <-- Cette accolade est la vraie fermeture de la fonction generateThumbnails()
 
   // Function to set the language of the page elements
   function setLanguage() {
